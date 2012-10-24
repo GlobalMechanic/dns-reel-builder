@@ -1,4 +1,6 @@
 AssetManager::Application.routes.draw do
+  resources :clips
+
   get "home/index"
 
   # The priority is based upon order of creation:

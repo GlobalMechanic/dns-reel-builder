@@ -7,10 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-	<div class="container">
-		<p class="notice"><%= notice %></p>
-	  <p class="alert"><%= alert %></p>
-		<%= yield %>
-	</div>
+  <div class="container">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <% if user_signed_in? %>
+    <ul>
+      <li><%= link_to "Edit #{current_user.name}", edit_user_registration_path %></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
+    </ul>
+    <% end %>
+
+    <%= yield %>
+  </div>
 </body>
 </html>

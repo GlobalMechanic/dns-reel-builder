@@ -1,4 +1,6 @@
 AssetManager::Application.routes.draw do
+  devise_for :users
+
   resources :clips
 
   get "home/index"

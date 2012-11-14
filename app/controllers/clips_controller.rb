@@ -1,4 +1,5 @@
 class ClipsController < ApplicationController
+  
   # GET /clips
   # GET /clips.json
   def index

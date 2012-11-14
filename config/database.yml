@@ -6,11 +6,11 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: asset_manager
+  database: asset-manager
   pool: 5
   username: tylor
   password:
-
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

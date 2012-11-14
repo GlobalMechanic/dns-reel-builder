@@ -1,18 +1,28 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <strong>Name:</strong>
   <%= @clip.name %>
 </p>
 
 <p>
-  <b>Title:</b>
+  <strong>Title:</strong>
   <%= @clip.title %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <strong>Description:</strong>
   <%= @clip.description %>
+</p>
+
+<p>
+	<strong>Image:</strong>
+	<%= image_tag @clip.thumbnail.url %>
+</p>
+
+<p>
+	<strong>Versions:</strong>
+	<%= @clip.versions %>
 </p>
 
 

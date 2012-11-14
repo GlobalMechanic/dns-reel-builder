@@ -9,6 +9,7 @@ gem 'pg'
 gem 'json'
 gem 'paperclip'
 gem 'paper_trail'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.

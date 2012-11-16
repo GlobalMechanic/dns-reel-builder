@@ -1,6 +1,10 @@
 AssetManager::Application.routes.draw do
   devise_for :users
 
+  scope "/admin" do
+    resources :users #, :only => [:index, :edit]
+  end
+
   resources :clips
 
   get "home/index"

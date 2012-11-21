@@ -16,7 +16,24 @@
   <video src="<%= @clip.video %>" controls></video>
   <div>
     <strong>Versions:</strong>
-    <%= @clip.versions %>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Action</th>
+          <th>Time</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @clip.versions.reverse.each do |version| %>
+        <tr>
+          <td><%= version.id %></td>
+          <td><%= version.event %></td>
+          <td><%= version.created_at %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 
   <% if @clip.thumbnail? %>

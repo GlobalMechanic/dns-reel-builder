@@ -7,4 +7,6 @@ class Clip < ActiveRecord::Base
   validates :name,  :presence => true
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
+  validates :video, :presence => true
+  validates :image, :presence => true
 end

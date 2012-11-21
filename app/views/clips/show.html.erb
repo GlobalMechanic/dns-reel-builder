@@ -1,30 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @clip.name %>
-</p>
+<%= link_to 'Back to Clips', clips_path %>
+<%= link_to 'Edit Clip', edit_clip_path(@clip) %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @clip.title %>
-</p>
+<h1><%= @clip.title %></h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @clip.description %>
-</p>
+<div class="clip">
+  <div class="meta">
+    <img src="<%= @clip.image %>" />
+    <div><strong>Title:</strong> <%= @clip.title %></div>
+    <div><strong>Username:</strong> <%= @clip.name %></div>
+    <div><strong>Description:</strong></div>
+    <div><%= @clip.description %></div>
+  </div>
+  <video src="<%= @clip.video %>" controls></video>
+  <div>
+    <strong>Versions:</strong>
+    <%= @clip.versions %>
+  </div>
 
-<p>
-	<strong>Image:</strong>
-	<%= image_tag @clip.thumbnail.url %>
-</p>
-
-<p>
-	<strong>Versions:</strong>
-	<%= @clip.versions %>
-</p>
-
-
-<%= link_to 'Edit', edit_clip_path(@clip) %> |
-<%= link_to 'Back', clips_path %>
+  <% if @clip.thumbnail? %>
+  <div>
+  	<strong>Image:</strong>
+  	<%= image_tag @clip.thumbnail.url %>
+  </div>
+  <% end %>
+</div>

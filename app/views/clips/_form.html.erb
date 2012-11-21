@@ -24,6 +24,14 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+  </div>
+  <div class="field">
+    <%= f.label :video %>
+    <%= f.text_field :video %>
+  </div>
+  <div class="field">
     <% if @clip.thumbnail? %>
     <%= image_tag @clip.thumbnail.url %><br />
     <% end %>
@@ -31,5 +39,6 @@
   </div>
   <div class="actions">
     <%= f.submit %>
+    <%= link_to 'Destroy', @clip, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 <% end %>

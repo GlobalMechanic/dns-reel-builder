@@ -1,0 +1,9 @@
+.meta img {
+  float: left;
+  margin-right: 10px;
+}
+
+.clip video {
+  margin: 10px 0;
+  width: 100%;
+}

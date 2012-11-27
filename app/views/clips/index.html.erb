@@ -5,7 +5,7 @@
 <div class="clips">
   <% @clips.each do |clip| %>
   <a href="<%= url_for clip %>" class="clip">
-    <img src="<%= clip.image %>" alt="<%= clip.title %>" />
+    <img src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" />
   </a>
   <% end %>
 </div>

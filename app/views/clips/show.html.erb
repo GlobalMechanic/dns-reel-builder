@@ -7,13 +7,13 @@
 
 <div class="clip">
   <div class="meta">
-    <img src="<%= @clip.image %>" />
+    <img src="http://globalmechanic.com/clip/thumbnails/<%= @clip.image %>" />
     <div><strong>Title:</strong> <%= @clip.title %></div>
     <div><strong>Username:</strong> <%= @clip.name %></div>
     <div><strong>Description:</strong></div>
     <div><%= @clip.description %></div>
   </div>
-  <video src="<%= @clip.video %>" controls></video>
+  <video src="http://globalmechanic.com/clip/movies/<%= @clip.video %>" controls></video>
   <div>
     <strong>Versions:</strong>
     <table>

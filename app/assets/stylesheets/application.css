@@ -14,3 +14,6 @@
  *= require skeleton
  *= require_tree .
  */
+nav#primary li {
+  display: inline-block;
+}

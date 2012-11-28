@@ -3,7 +3,8 @@ class ClipsController < ApplicationController
   # GET /clips
   # GET /clips.json
   def index
-    @clips = Clip.all
+    per_page = 20
+    @clips = Clip.limit(per_page).offset(params[:page] ? params[:page].to_i * per_page : 0)
 
     respond_to do |format|
       format.html # index.html.erb

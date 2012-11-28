@@ -3,7 +3,44 @@
   margin-right: 10px;
 }
 
+.clip  {
+  color: #222;
+  background: #eee;
+  width: 188px;
+  height: 146px;
+  overflow: hidden;
+  position: relative;
+  display: block;
+  float: left;
+  margin: 0 4px 4px 0;
+}
+
+.clip a { text-decoration: none; }
+.clip a:hover { color: #666; }
+
+.clip .title {
+  width: 100%;
+  padding: 11px 0 11px 5px;
+  overflow: hidden;
+}
+
 .clip video {
   margin: 10px 0;
   width: 100%;
 }
+
+.clip .reel {
+  -webkit-transition: background-position-y 0.1s linear;
+  background: #eee url('add-remove.png') no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  display: block;
+  text-indent: -9999px;
+}
+.clip .reel.add { background-position: top left; }
+.clip .reel.add:hover { background-position: top right; }
+.clip .reel.remove { background-position: bottom left; }
+.clip .reel.remove:hover { background-position: bottom right; }

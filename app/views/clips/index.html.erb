@@ -4,8 +4,14 @@
 
 <div class="clips">
   <% @clips.each do |clip| %>
-  <a href="<%= url_for clip %>" class="clip">
-    <img src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" />
-  </a>
+  <div class="clip">
+    <a class="reel add" href="#">Add to Reel</a>
+    <a href="<%= url_for clip %>">
+      <div class="title"><%= clip.title %></div>
+      <img src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />
+    </a>
+  </div>
   <% end %>
 </div>
+
+<a href="?page=<%= params[:page] ? params[:page].to_i + 1 : 2 %>">Next</a>

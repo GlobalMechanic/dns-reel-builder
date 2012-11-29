@@ -1,6 +1,7 @@
 class Clip < ActiveRecord::Base
 	has_paper_trail
   has_attached_file :thumbnail
+  has_and_belongs_to_many :reels
 
   attr_accessible :description, :name, :title, :thumbnail, :video, :image
 

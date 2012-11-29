@@ -1,0 +1,23 @@
+<%= form_for @reel do |f| %>
+  <% if @reel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reel.errors.count, "error") %> prohibited this reel from being saved:</h2>
+
+      <ul>
+      <% @reel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+    <%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+<% end %>

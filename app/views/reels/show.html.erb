@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Back to Reels', reels_path %>
+<%= link_to 'Edit Reel', edit_reel_path(@reel) %>
+
+<h1><%= @reel.title %></h1>
+<h2><%= @reel.user.name %> - <%= link_to 'Edit', edit_user_path(@reel.user) %></h2>

@@ -6,6 +6,7 @@ AssetManager::Application.routes.draw do
   end
 
   resources :clips
+  resources :reels
   resources :versions
 
   get "home/index"

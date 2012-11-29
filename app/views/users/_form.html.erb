@@ -15,10 +15,15 @@
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
+
   <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
+
+  <% @user.reels.each do |reel| %>
+    <%= reel.title %> <%= link_to 'Show', reel %>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
     <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>

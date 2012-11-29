@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates :name,  :presence => true, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
 
+  has_many :reels
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)

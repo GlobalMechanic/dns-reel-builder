@@ -1,10 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Back to Reels', reels_path %>
-<%= link_to 'Edit Reel', edit_reel_path(@reel) %>
+<%= link_to 'Show', reel_path(@reel) %>
+<%= link_to 'Filter', filter_reel_path(@reel) %>
+<%= link_to 'Edit', edit_reel_path(@reel) %>
+<%= link_to 'User', edit_user_path(@reel.user) %>
 
-<h1><%= @reel.title %></h1>
-<h2><%= @reel.user.name %> - <%= link_to 'Edit', edit_user_path(@reel.user) %></h2>
+<h2><%= @reel.title %> by <%= @reel.user.name %></h2>
 
 <div id="reel-<%= @reel.id %>" class="reel-id clips">
   <% @clips.each do |clip| %>

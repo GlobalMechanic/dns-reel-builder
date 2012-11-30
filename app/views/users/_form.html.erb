@@ -22,7 +22,9 @@
   </div>
 
   <% @user.reels.each do |reel| %>
-    <%= reel.title %> <%= link_to 'Show', reel %>
+    <div>
+      <%= reel.title %> <%= link_to 'Show', reel %>
+    </div>
   <% end %>
   <div class="actions">
     <%= f.submit %>

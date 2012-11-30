@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Back to Reels', reels_path %>
-<%= link_to 'Show', reel_path(@reel) %>
-<%= link_to 'Filter', filter_reel_path(@reel) %>
+<%= link_to 'Browse', reel_path(@reel) %>
+<%= link_to 'Reel', filter_reel_path(@reel) %>
 <%= link_to 'Edit', edit_reel_path(@reel) %>
 <%= link_to 'User', edit_user_path(@reel.user) %>
 
@@ -14,8 +14,8 @@
     <a id="clip-<%= clip.id %>" class="reel <%= @reel.clips.exists?(clip) ? 'remove' : 'add' %>" href="#">Add to Reel</a>
     <a href="<%= url_for clip %>">
       <div class="title"><%= clip.title %></div>
-      <!--<img src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />-->
-      <img src="/assets/188x106.png" alt="Placeholder">
+      <img src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />
+      <!-- <img src="/assets/188x106.png" alt="Placeholder"> -->
     </a>
   </div>
   <% end %>

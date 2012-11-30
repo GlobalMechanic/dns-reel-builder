@@ -3,6 +3,9 @@
   margin-right: 10px;
 }
 
+.clips {
+  clear: both;
+}
 .clip  {
   color: #222;
   background: #eee;
@@ -30,7 +33,7 @@
 }
 
 .clip .reel {
-  -webkit-transition: background-position-y 0.1s linear;
+  -webkit-transition: background-position-y, background-color 0.1s linear;
   background: #eee url('add-remove.png') no-repeat;
   position: absolute;
   top: 0;
@@ -40,6 +43,7 @@
   display: block;
   text-indent: -9999px;
 }
+.clip .reel.loading { background-color: #ddd; }
 .clip .reel.add { background-position: top left; }
 .clip .reel.add:hover { background-position: top right; }
 .clip .reel.remove { background-position: bottom left; }

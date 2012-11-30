@@ -6,8 +6,15 @@ AssetManager::Application.routes.draw do
   end
 
   resources :clips
-  resources :reels
   resources :versions
+
+  resources :reels do
+    member do
+      get 'add'
+      get 'remove'
+      get 'filter'
+    end
+  end
 
   get "home/index"
 

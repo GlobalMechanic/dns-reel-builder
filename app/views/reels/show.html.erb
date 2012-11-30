@@ -5,3 +5,16 @@
 
 <h1><%= @reel.title %></h1>
 <h2><%= @reel.user.name %> - <%= link_to 'Edit', edit_user_path(@reel.user) %></h2>
+
+<div id="reel-<%= @reel.id %>" class="reel-id clips">
+  <% @clips.each do |clip| %>
+  <div class="clip">
+    <a id="clip-<%= clip.id %>" class="reel <%= @reel.clips.exists?(clip) ? 'remove' : 'add' %>" href="#">Add to Reel</a>
+    <a href="<%= url_for clip %>">
+      <div class="title"><%= clip.title %></div>
+      <!--<img src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />-->
+      <img src="/assets/188x106.png" alt="Placeholder">
+    </a>
+  </div>
+  <% end %>
+</div>

@@ -15,9 +15,20 @@ class ReelsController < ApplicationController
   # GET /reels/1.json
   def show
     @reel = Reel.find(params[:id])
-
+    @clips = Clip.all
     respond_to do |format|
       format.html # show.html.erb
+      format.json { render json: @reel }
+    end
+  end
+
+  # GET /reels/1/filter
+  # GET /reels/1/filter.json
+  def filter
+    @reel = Reel.find(params[:id])
+    @clips = @reel.clips
+    respond_to do |format|
+      format.html { render :template => "reels/show.html.erb" } # resuse show.html.erb for now
       format.json { render json: @reel }
     end
   end
@@ -61,6 +72,40 @@ class ReelsController < ApplicationController
 
     respond_to do |format|
       if @reel.update_attributes(params[:reel])
+        format.html { redirect_to @reel, notice: 'Reel was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @reel.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET /reels/1/add?clip_id=1
+  # GET /reels/1/add.json?clip_id=1
+  def add
+    @reel = Reel.find(params[:id])
+    @clip = Clip.find(params[:clip_id])
+
+    respond_to do |format|
+      if @reel.clips << @clip
+        format.html { redirect_to @reel, notice: 'Reel was successfully updated.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "edit" }
+        format.json { render json: @reel.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PUT /reels/1/remove?1
+  # PUT /reels/1/remove.json?1
+  def remove
+    @reel = Reel.find(params[:id])
+    @clip = Clip.find(params[:clip_id])
+
+    respond_to do |format|
+      if @reel.clips.delete(@clip)
         format.html { redirect_to @reel, notice: 'Reel was successfully updated.' }
         format.json { head :no_content }
       else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203190223) do
+ActiveRecord::Schema.define(:version => 20121203191840) do
 
   create_table "clips", :force => true do |t|
     t.string   "name"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(:version => 20121203190223) do
   create_table "reel_clips", :force => true do |t|
     t.integer  "reel_id"
     t.integer  "clip_id"
-    t.integer  "weight"
+    t.integer  "order"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -85,10 +85,16 @@ class ReelsController < ApplicationController
   # GET /reels/1/add.json?clip_id=1
   def add
     @reel = Reel.find(params[:id])
+    next_order = @reel.reel_clips.length > 0 ? @reel.reel_clips.last.order.to_i + 1 : 0
+    puts next_order
     @clip = Clip.find(params[:clip_id])
+    #@reel_clip = @reel.new ReelClip
+    @reel_clip = @reel.reel_clips.new
+    @reel_clip.clip_id = @clip.id
+    @reel_clip.order = next_order
 
     respond_to do |format|
-      if @reel.clips << @clip
+      if @reel_clip.save
         format.html { redirect_to @reel, notice: 'Reel was successfully updated.' }
         format.json { head :no_content }
       else

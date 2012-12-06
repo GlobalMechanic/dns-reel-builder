@@ -30,8 +30,14 @@ $(document).ready(function() {
       $('.clips').removeClass('dragging');
       return true;
     });
-    $('.slot').bind('dragover', function() {
-      $(this).addClass('active');
+    $('.slot').bind('dragover', function(e) {
+      // Dragging into current slot.
+      if ($dragged.next().get(0) === this || $dragged.prev().get(0) === this) {
+        window.event.dataTransfer.dropEffect = 'none';
+      }
+      else {
+        $(this).addClass('active');
+      }
       return false;
     }).bind('dragleave', function() {
       $(this).removeClass('active');

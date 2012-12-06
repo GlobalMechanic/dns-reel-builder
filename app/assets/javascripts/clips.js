@@ -2,7 +2,7 @@ $(document).ready(function() {
   $reel = $('.reel-id');
   if ($reel.length > 0) {
     var reelID = $reel.attr('id').replace(/reel-/, '');
-    $('.clip .reel').click(function() {
+    $('.clip .reel').click(function(e) {
       var $clip = $(this);
       var clipID = $clip.attr('id').replace(/clip-/, '');
       $clip.toggleClass('add').toggleClass('remove').addClass('loading');
@@ -22,11 +22,11 @@ $(document).ready(function() {
     });
 
     var $dragged = null;
-    $('.clip').bind('dragstart', function() {
+    $('.clip').bind('dragstart', function(e) {
       $('.clips').addClass('dragging');
       $dragged = $(this);
       return true;
-    }).bind('dragend', function() {
+    }).bind('dragend', function(e) {
       $('.clips').removeClass('dragging');
       return true;
     });
@@ -39,15 +39,22 @@ $(document).ready(function() {
         $(this).addClass('active');
       }
       return false;
-    }).bind('dragleave', function() {
+    }).bind('dragleave', function(e) {
       $(this).removeClass('active');
       return false;
     }).bind('drop', function(e) {
-      //window.tylor = e;
+      var $this = $(this);
       var $bringMeAlong = $dragged.prev();
-      $dragged.insertAfter(this);
+
+      $dragged.insertAfter($this);
       $bringMeAlong.insertAfter($dragged);
-      $(this).removeClass('active');
+
+      // $dragged.animate({ width: 'toggle' }, 1000, function() {
+      //   $dragged.insertAfter($this).animate({ width: 'toggle' }, 1000);
+      //   $bringMeAlong.insertAfter($dragged);
+      // });
+
+      $this.removeClass('active');
 
       //var slot = $(this).attr('id').replace(/slot-/, '');
       //console.log(slot);

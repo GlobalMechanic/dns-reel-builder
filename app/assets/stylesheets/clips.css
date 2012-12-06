@@ -15,7 +15,17 @@
   position: relative;
   display: block;
   float: left;
-  margin: 0 4px 4px 0;
+  margin: 0 0 4px 0;
+  cursor:hand;
+  cursor:grab;
+  cursor:-moz-grab;
+  cursor:-webkit-grab;
+}
+.clip img {
+  cursor:hand;
+  cursor:grab;
+  cursor:-moz-grab;
+  cursor:-webkit-grab;
 }
 
 .clip a { text-decoration: none; }
@@ -48,3 +58,27 @@
 .clip .reel.add:hover { background-position: top right; }
 .clip .reel.remove { background-position: bottom left; }
 .clip .reel.remove:hover { background-position: bottom right; }
+
+.slot {
+  display: block;
+  float: left;
+  width: 0px;
+  border-right: 4px dashed transparent; 
+  margin-right: 0px;
+  height: 146px;
+  position: relative;
+}
+.slot.active { border-right: 4px dotted red; }
+
+.slot .region {
+  cursor: default;
+  width: 100px;
+  left: -48px;
+  height: 146px;
+  top: 0;
+  z-index: 100;
+  position: absolute;
+}
+.clips.dragging .slot .region {
+  display: block;
+}

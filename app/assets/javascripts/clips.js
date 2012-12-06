@@ -20,6 +20,33 @@ $(document).ready(function() {
       }
       return false;
     });
+
+    var $dragged = null;
+    $('.clip').bind('dragstart', function() {
+      $('.clips').addClass('dragging');
+      $dragged = $(this);
+      return true;
+    }).bind('dragend', function() {
+      $('.clips').removeClass('dragging');
+      return true;
+    });
+    $('.slot').bind('dragover', function() {
+      $(this).addClass('active');
+      return false;
+    }).bind('dragleave', function() {
+      $(this).removeClass('active');
+      return false;
+    }).bind('drop', function(e) {
+      //window.tylor = e;
+      var $bringMeAlong = $dragged.prev();
+      $dragged.insertAfter(this);
+      $bringMeAlong.insertAfter($dragged);
+      $(this).removeClass('active');
+
+      //var slot = $(this).attr('id').replace(/slot-/, '');
+      //console.log(slot);
+    });
+
   }
   else {
     $('.clip .reel').remove();

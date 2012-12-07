@@ -18,7 +18,8 @@
     <a draggable="false" href="<%= url_for clip %>">
       <div class="title"><%= clip.title %></div>
       <!-- <img draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" /> -->
-      <img draggable="false" src="/assets/188x106.png" alt="Placeholder">
+      <img draggable="false" src="http://shielded-anchorage-8580.herokuapp.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />
+      <!-- <img draggable="false" src="/assets/188x106.png" alt="Placeholder"> -->
     </a>
   </div>
   <div id="slot-<%= index + 1 %>" class="slot">

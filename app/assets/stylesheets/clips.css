@@ -28,6 +28,10 @@
   cursor:-webkit-grab;
 }
 
+.clip.dragged {
+  opacity: 0.4;
+}
+
 .clip a { text-decoration: none; }
 .clip a:hover { color: #666; }
 
@@ -68,10 +72,11 @@
   height: 146px;
   position: relative;
 }
-.slot.active { border-right: 4px dotted red; }
+.slot.active { border-right: 4px solid red; }
 
 .slot .region {
   cursor: default;
+  display: none;
   width: 100px;
   left: -48px;
   height: 146px;
@@ -81,4 +86,8 @@
 }
 .clips.dragging .slot .region {
   display: block;
+}
+
+.dropped {
+  background: red;
 }

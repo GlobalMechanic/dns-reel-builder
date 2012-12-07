@@ -13,6 +13,7 @@ AssetManager::Application.routes.draw do
       get 'add'
       get 'remove'
       get 'filter'
+      post 'sort'
     end
   end
 

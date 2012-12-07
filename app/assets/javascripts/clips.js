@@ -8,13 +8,11 @@ $(document).ready(function() {
       $clip.toggleClass('add').toggleClass('remove').addClass('loading');
       if ($clip.hasClass('add')) {
         $.get('/reels/' + reelID + '/remove.json', { clip_id: clipID }, function(data) {
-          console.log(data);
           $clip.removeClass('loading');
         });
       }
       else if ($clip.hasClass('remove')) {
         $.get('/reels/' + reelID + '/add.json', { clip_id: clipID }, function(data) {
-          console.log(data);
           $clip.removeClass('loading');
         });
       }
@@ -24,21 +22,23 @@ $(document).ready(function() {
     var $dragged = null;
     $('.clip').bind('dragstart', function(e) {
       $('.clips').addClass('dragging');
-      $dragged = $(this);
+      $dragged = $(this).addClass('dragged');
       return true;
     }).bind('dragend', function(e) {
       $('.clips').removeClass('dragging');
+      $dragged.removeClass('dragged');
       return true;
     });
+
     $('.slot').bind('dragover', function(e) {
-      // Dragging into current slot.
+      $(this).addClass('active');
+      // Drag into a neighbouring slot (no change).
       if ($dragged.next().get(0) === this || $dragged.prev().get(0) === this) {
-        window.event.dataTransfer.dropEffect = 'none';
+        return true;
       }
       else {
-        $(this).addClass('active');
+        return false;
       }
-      return false;
     }).bind('dragleave', function(e) {
       $(this).removeClass('active');
       return false;
@@ -46,18 +46,21 @@ $(document).ready(function() {
       var $this = $(this);
       var $bringMeAlong = $dragged.prev();
 
+      // Move clip into new slot
       $dragged.insertAfter($this);
       $bringMeAlong.insertAfter($dragged);
 
-      // $dragged.animate({ width: 'toggle' }, 1000, function() {
-      //   $dragged.insertAfter($this).animate({ width: 'toggle' }, 1000);
-      //   $bringMeAlong.insertAfter($dragged);
-      // });
-
+      // Remove active from slot.
       $this.removeClass('active');
 
-      //var slot = $(this).attr('id').replace(/slot-/, '');
-      //console.log(slot);
+      // Save new order to server.
+      var clips = [];
+      $('.clip .reel').each(function(index, clip) {
+        clips.push($(clip).attr('id').replace(/clip-/, ''));
+      });
+      $.post('/reels/' + reelID + '/sort.json', { order: clips }, function(data) {
+        // We cool.
+      });
     });
 
   }

@@ -26,11 +26,34 @@ class ReelsController < ApplicationController
   # GET /reels/1/filter.json
   def filter
     @reel = Reel.find(params[:id])
-    @clips = @reel.clips
+    #@clips = @reel.clips.sort_by {|order,v| v}
+    @clips = @reel.clips.order('"order"')
     respond_to do |format|
       format.html { render :template => "reels/show.html.erb" } # resuse show.html.erb for now
       format.json { render json: @reel }
     end
+  end
+
+  # POST /reels/1/sort.json
+  def sort
+
+    params[:order].each_with_index do |id, index|
+      @reel_clip = ReelClip.find_by_reel_id_and_clip_id(params[:id], id.to_i)
+      @reel_clip.order = index
+      @reel_clip.save
+    end
+    # sorted = []
+    # params[:order].each do |id|
+    #   sorted.push(@reel.clips.find { |clip| clip[:id] == id.to_i })
+    # end
+    
+    # @reel.clips = sorted
+    # puts @reel.clips.inspect
+
+    respond_to do |format|
+      format.json { render json: true }
+    end
+    
   end
 
   # GET /reels/new

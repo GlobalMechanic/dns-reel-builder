@@ -16,6 +16,10 @@ namespace :gm do
         :name => clip['clip_director'],
         :video => clip['clip_movies'],
         :image => clip['clip_thumbs'],
+        :agency => clip['clip_agency'],
+        :client => clip['clip_client'],
+        :year => clip['clip_year'],
+        :month => clip['clip_month'],
         # :thumbnail => open(clip[:image]),
       )
       puts num.to_s + ': ' + clip['clip_name']

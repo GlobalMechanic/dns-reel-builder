@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121203191840) do
+ActiveRecord::Schema.define(:version => 20121210181846) do
 
   create_table "clips", :force => true do |t|
     t.string   "name"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(:version => 20121203191840) do
     t.datetime "thumbnail_updated_at"
     t.string   "video"
     t.string   "image"
+    t.string   "agency"
+    t.string   "client"
+    t.string   "year"
+    t.string   "month"
   end
 
   create_table "reel_clips", :force => true do |t|

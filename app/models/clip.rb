@@ -5,7 +5,16 @@ class Clip < ActiveRecord::Base
   has_many :reel_clips
   has_many :reels, :through => :reel_clips
 
-  attr_accessible :description, :name, :title, :thumbnail, :video, :image
+  attr_accessible :description,
+                  :name,
+                  :title,
+                  :thumbnail,
+                  :video,
+                  :image,
+                  :agency,
+                  :client,
+                  :year, 
+                  :month
 
   validates :name,  :presence => true
   validates :title, :presence => true,

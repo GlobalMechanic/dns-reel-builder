@@ -9,17 +9,17 @@ class Clip < ActiveRecord::Base
   #has_many :reels, :through => :reel_clips
 
   attr_accessible :description,
-                  :name,
                   :title,
                   :thumbnail,
                   :video,
                   :image,
+                  :director,
                   :agency,
                   :client,
                   :year, 
                   :month
 
-  validates :name,  :presence => true
+  validates :director,  :presence => true
   validates :title, :presence => true,
                     :length => { :minimum => 5 }
   validates :video, :presence => true

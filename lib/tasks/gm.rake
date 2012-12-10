@@ -13,7 +13,7 @@ namespace :gm do
       new_clip = Clip.new(
         :title => clip['clip_name'],
         :description => clip['clip_description'],
-        :name => clip['clip_director'],
+        :director => clip['clip_director'],
         :video => clip['clip_movies'],
         :image => clip['clip_thumbs'],
         :agency => clip['clip_agency'],

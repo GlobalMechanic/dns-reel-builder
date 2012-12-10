@@ -2,8 +2,9 @@ class Clip < ActiveRecord::Base
 	has_paper_trail
   has_attached_file :thumbnail
 
-  has_many :reel_clips
-  has_many :reels, :through => :reel_clips
+  # If we need to access reels through clips.
+  #has_many :reel_clips
+  #has_many :reels, :through => :reel_clips
 
   attr_accessible :description,
                   :name,

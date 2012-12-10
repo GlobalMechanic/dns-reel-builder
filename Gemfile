@@ -11,6 +11,7 @@ gem 'json'
 gem 'paperclip'
 gem 'paper_trail'
 gem 'devise'
+gem 'acts-as-taggable-on', '~> 2.3.3'
 
 # Gems used only for assets and not required
 # in production environments by default.

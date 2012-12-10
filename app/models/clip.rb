@@ -2,6 +2,8 @@ class Clip < ActiveRecord::Base
 	has_paper_trail
   has_attached_file :thumbnail
 
+  acts_as_taggable_on :keywords, :techniques
+
   # If we need to access reels through clips.
   #has_many :reel_clips
   #has_many :reels, :through => :reel_clips

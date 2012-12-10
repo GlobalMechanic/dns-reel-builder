@@ -10,7 +10,7 @@ namespace :gm do
     client = Mysql2::Client.new(config.symbolize_keys)
     clips = client.query("SELECT * FROM gm_clips where clip_active = 1")
     clips.each do |clip|
-      Clip.create(
+      new_clip = Clip.new(
         :title => clip['clip_name'],
         :description => clip['clip_description'],
         :name => clip['clip_director'],
@@ -22,6 +22,11 @@ namespace :gm do
         :month => clip['clip_month'],
         # :thumbnail => open(clip[:image]),
       )
+      # For some reason, can't mass assign tags in create, so break out:
+      new_clip.keyword_list = clip['keywords']
+      new_clip.technique_list = clip['clip_technique']
+      new_clip.save
+
       puts num.to_s + ': ' + clip['clip_name']
       num += 1
     end

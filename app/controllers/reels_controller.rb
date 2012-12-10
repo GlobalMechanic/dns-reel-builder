@@ -15,7 +15,9 @@ class ReelsController < ApplicationController
   # GET /reels/1.json
   def show
     @reel = Reel.find(params[:id])
-    @clips = Clip.all
+    @search = Clip.search(params[:search])
+    @clips = @search.all
+    
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @reel }

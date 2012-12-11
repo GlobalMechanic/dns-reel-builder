@@ -7,9 +7,10 @@
 
 <div class="clip-single">
   <div class="meta">
-    <img src="http://globalmechanic.com/clip/thumbnails/<%= @clip.image %>" />
+    <!-- <img src="http://globalmechanic.com/clip/thumbnails/<%= @clip.image %>" /> -->
+    <img src="http://shielded-anchorage-8580.herokuapp.com/clip/thumbnails/<%= @clip.image %>" />
     <div><strong>Title:</strong> <%= @clip.title %></div>
-    <div><strong>Username:</strong> <%= @clip.name %></div>
+    <div><strong>Director:</strong> <%= @clip.director %></div>
     <div><strong>Agency:</strong> <%= @clip.agency %></div>
     <div><strong>Client:</strong> <%= @clip.client %></div>
     <div><strong>Keywords:</strong> <%= @clip.keyword_list.join(', ') %></div>
@@ -18,7 +19,8 @@
     <div><strong>Description:</strong></div>
     <div><%= @clip.description %></div>
   </div>
-  <video src="http://globalmechanic.com/clip/movies/<%= @clip.video %>" controls></video>
+  <!-- <video src="http://globalmechanic.com/clip/movies/<%= @clip.video %>" controls></video> -->
+  <video src="http://shielded-anchorage-8580.herokuapp.com/clip/movies/<%= @clip.video %>" controls></video>
   <div>
     <strong>Versions:</strong>
     <table>

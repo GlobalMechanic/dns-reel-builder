@@ -28,7 +28,6 @@ class ReelsController < ApplicationController
   # GET /reels/1/filter.json
   def filter
     @reel = Reel.find(params[:id])
-    #@clips = @reel.clips.sort_by {|order,v| v}
     @clips = @reel.clips.order('"order"')
     respond_to do |format|
       format.html { render :template => "reels/show.html.erb" } # resuse show.html.erb for now

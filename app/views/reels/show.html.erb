@@ -1,12 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Back to Reels', reels_path %>
-<%= link_to 'Browse', reel_path(@reel) %>
-<%= link_to 'Reel', filter_reel_path(@reel) %>
-<%= link_to 'Edit', edit_reel_path(@reel) %>
-<%= link_to 'User', edit_user_path(@reel.user) %>
-
 <h2><%= @reel.title %> by <%= @reel.user.name %></h2>
+
+<nav>
+  <ul>
+    <li><%= link_to 'Browse', reel_path(@reel) %></li>
+    <li><%= link_to 'Arrange', filter_reel_path(@reel) %></li>
+    <li><%= link_to 'Edit', edit_reel_path(@reel) %></li>
+  </ul>
+</nav>
 
 <% if @search %>
   <%= form_for(@search, :url => reel_path(@reel)) do |f| %>

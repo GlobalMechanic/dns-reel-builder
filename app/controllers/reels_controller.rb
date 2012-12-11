@@ -1,5 +1,11 @@
 class ReelsController < ApplicationController
 
+  # Helpers
+  def set_current_reel_id(reel_id)
+    current_user.current_reel_id = reel_id
+    current_user.save
+  end
+
   # GET /reels
   # GET /reels.json
   def index
@@ -16,7 +22,9 @@ class ReelsController < ApplicationController
   def show
     @reel = Reel.find(params[:id])
     @search = Clip.search(params[:search])
-    @clips = @search.all
+    @clips = @search.order('title')
+
+    set_current_reel_id @reel.id
     
     respond_to do |format|
       format.html # show.html.erb
@@ -29,6 +37,7 @@ class ReelsController < ApplicationController
   def filter
     @reel = Reel.find(params[:id])
     @clips = @reel.clips.order('"order"')
+    set_current_reel_id @reel.id
     respond_to do |format|
       format.html { render :template => "reels/show.html.erb" } # resuse show.html.erb for now
       format.json { render json: @reel }
@@ -37,7 +46,6 @@ class ReelsController < ApplicationController
 
   # POST /reels/1/sort.json
   def sort
-
     params[:order].each_with_index do |id, index|
       @reel_clip = ReelClip.find_by_reel_id_and_clip_id(params[:id], id.to_i)
       @reel_clip.order = index
@@ -78,8 +86,7 @@ class ReelsController < ApplicationController
   def create
     @reel = current_user.reels.new(params[:reel])
     @reel.save
-    current_user.current_reel_id = @reel.id
-    current_user.save
+    set_current_reel_id @reel.id
    # @reel.user = current_user
     respond_to do |format|
       if current_user.save

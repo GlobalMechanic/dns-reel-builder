@@ -14,6 +14,8 @@
  *= require skeleton
  *= require_tree .
  */
-nav#primary li {
+nav li {
   display: inline-block;
 }
+
+footer { clear: both; }

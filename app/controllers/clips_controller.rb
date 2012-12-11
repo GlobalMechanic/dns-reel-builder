@@ -4,7 +4,7 @@ class ClipsController < ApplicationController
   # GET /clips.json
   def index
     @search = Clip.search(params[:search])
-    @clips = @search.all
+    @clips = @search.order('title')
     
     # per_page = 20
     # @clips = Clip.limit(per_page).offset(params[:page] ? params[:page].to_i * per_page : 0)

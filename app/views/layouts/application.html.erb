@@ -3,6 +3,10 @@
 <head>
   <title>Asset Manager</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <script type="text/javascript">
+    var gm = gm || {};
+    gm.current_reel_id = <%= current_user.current_reel_id? ? current_user.current_reel_id : 'null' %>;
+  </script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -14,6 +18,9 @@
     <% if user_signed_in? %>
     <nav id="primary">
       <ul>
+        <% if current_user.current_reel_id? %>
+        <li>Reel <%= current_user.current_reel_id %></li>
+        <% end %>
         <li><%= link_to 'Clips', clips_path %></li>
         <li><%= link_to 'Reels', reels_path %></li>
         <li><%= link_to 'Users', users_path %></li>

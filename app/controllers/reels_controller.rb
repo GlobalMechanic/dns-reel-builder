@@ -78,9 +78,12 @@ class ReelsController < ApplicationController
   # POST /reels.json
   def create
     @reel = current_user.reels.new(params[:reel])
+    @reel.save
+    current_user.current_reel_id = @reel.id
+    current_user.save
    # @reel.user = current_user
     respond_to do |format|
-      if @reel.save
+      if current_user.save
         format.html { redirect_to @reel, notice: 'Reel was successfully created.' }
         format.json { render json: @reel, status: :created, location: @reel }
       else

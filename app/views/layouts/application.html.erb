@@ -5,7 +5,9 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <script type="text/javascript">
     var gm = gm || {};
+    <% if current_user %>
     gm.current_reel_id = <%= current_user.current_reel_id? ? current_user.current_reel_id : 'null' %>;
+    <% end %>
   </script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>

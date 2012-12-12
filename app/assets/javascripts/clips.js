@@ -1,5 +1,5 @@
 $(document).ready(function() {
-  if (gm.current_reel_id === null) {
+  if (gm.current_reel_slug === null) {
     // Create a blank reel.
   }
 
@@ -9,12 +9,12 @@ $(document).ready(function() {
     var clipID = $clip.attr('id').replace(/clip-/, '');
     $clip.toggleClass('add').toggleClass('remove').addClass('loading');
     if ($clip.hasClass('add')) {
-      $.get('/reels/' + gm.current_reel_id + '/remove.json', { clip_id: clipID }, function(data) {
+      $.get('/reels/' + gm.current_reel_slug + '/remove.json', { clip_id: clipID }, function(data) {
         $clip.removeClass('loading');
       });
     }
     else if ($clip.hasClass('remove')) {
-      $.get('/reels/' + gm.current_reel_id + '/add.json', { clip_id: clipID }, function(data) {
+      $.get('/reels/' + gm.current_reel_slug + '/add.json', { clip_id: clipID }, function(data) {
         $clip.removeClass('loading');
       });
     }
@@ -64,7 +64,7 @@ $(document).ready(function() {
     $('.clip .reel').each(function(index, clip) {
       clips.push($(clip).attr('id').replace(/clip-/, ''));
     });
-    $.post('/reels/' + gm.current_reel_id + '/sort.json', { order: clips }, function(data) {
+    $.post('/reels/' + gm.current_reel_slug + '/sort.json', { order: clips }, function(data) {
       // We cool.
     });
   });

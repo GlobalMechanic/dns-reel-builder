@@ -18,13 +18,13 @@
   <% end %>
 <% end %>
 
-<div id="reel-<%= @reel.id %>" class="reel-id clips">
+<div id="reel-<%= @reel.slug %>" class="reel-id clips">
   <div id="slot-0" class="slot">
     <div class="region"></div>
   </div>
   <% @clips.each_with_index do |clip, index| %>
   <div class="clip" draggable="true">
-    <a  draggable="false" id="clip-<%= clip.id %>" class="reel <%= @reel.clips.exists?(clip) ? 'remove' : 'add' %>" href="#">Add to Reel</a>
+    <a  draggable="false" id="clip-<%= clip.id %>" class="reel <%= @reel.clips.exists?(clip) ? 'remove' : 'add' %>" href="<%= @reel.clips.exists?(clip) ? '/reels/' + @reel.slug + '/remove' : '/reels/' + @reel.slug + '/add' %>">Add to Reel</a>
     <a draggable="false" href="<%= url_for clip %>">
       <div class="title"><%= clip.title %></div>
       <!-- <img draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" /> -->

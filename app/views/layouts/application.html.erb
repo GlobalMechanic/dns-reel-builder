@@ -6,7 +6,7 @@
   <script type="text/javascript">
     var gm = gm || {};
     <% if current_user %>
-    gm.current_reel_id = <%= current_user.current_reel_id? ? current_user.current_reel_id : 'null' %>;
+    gm.current_reel_slug = '<%= current_user.current_reel_slug? ? current_user.current_reel_slug : 'null' %>';
     <% end %>
   </script>
   <%= javascript_include_tag "application" %>
@@ -20,8 +20,8 @@
     <% if user_signed_in? %>
     <nav id="primary">
       <ul>
-        <% if current_user.current_reel_id? %>
-        <li>Reel <%= current_user.current_reel_id %></li>
+        <% if current_user.current_reel_slug? %>
+        <li>Reel <%= current_user.current_reel_slug %></li>
         <% end %>
         <li><%= link_to 'Clips', clips_path %></li>
         <li><%= link_to 'Reels', reels_path %></li>

@@ -4,13 +4,18 @@
   </div>
   <% @clips.each_with_index do |clip, index| %>
   <div class="clip" draggable="true">
-    <a draggable="false" id="clip-<%= clip.id %>" class="reel <%= @reel.clips.exists?(clip) ? 'remove' : 'add' %>" href="<%= @reel.clips.exists?(clip) ? '/reels/' + @reel.slug + '/remove' : '/reels/' + @reel.slug + '/add' %>">Add to Reel</a>
-    <a draggable="false" href="<%= url_for clip %>">
+    <% if @reel.clips.exists?(clip) %>
+    <%= link_to 'Remove from Reel', '/reels/' + @reel.slug + '/' + clip.id.to_s, method: :delete, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel remove' %>
+    <% else %>
+    <%= link_to 'Add to Reel', '/reels/' + @reel.slug + '/' + clip.id.to_s, method: :post, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel add' %>
+    <% end %>
+
+    <%= link_to clip, :draggable => false do %>
       <div class="title"><%= clip.title %></div>
       <!-- <img draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" /> -->
       <img draggable="false" src="http://shielded-anchorage-8580.herokuapp.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />
       <!-- <img draggable="false" src="/assets/188x106.png" alt="Placeholder"> -->
-    </a>
+    <% end %>
   </div>
   <div id="slot-<%= index + 1 %>" class="slot">
     <div class="region"></div>

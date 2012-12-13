@@ -6,11 +6,10 @@ $(document).ready(function() {
   // Clip add/remove click events.
   $('.clip .reel').click(function(e) {
     var $clip = $(this);
-    var clipID = $clip.attr('id').replace(/clip-/, '');
     $clip.toggleClass('add').toggleClass('remove').addClass('loading');
     if ($clip.hasClass('add')) {
       $.ajax({
-        url: '/reels/' + gm.current_reel_slug + '/' + clipID + '.json',
+        url: $clip.attr('href') + '.json',
         type: 'DELETE',
         success: function(data) {
           $clip.removeClass('loading');
@@ -19,7 +18,7 @@ $(document).ready(function() {
     }
     else if ($clip.hasClass('remove')) {
       $.ajax({
-        url: '/reels/' + gm.current_reel_slug + '/' + clipID + '.json',
+        url: $clip.attr('href') + '.json',
         type: 'POST',
         success: function(data) {
           $clip.removeClass('loading');

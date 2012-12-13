@@ -1,0 +1,8 @@
+<nav>
+  <ul>
+    <li><%= link_to 'Browse', clips_url %></li>
+    <% if current_user.current_reel_slug? %>
+    <li><%= link_to 'Arrange', edit_reel_path(current_user.current_reel_slug) %></li>
+    <% end %>
+  </ul>
+</nav>

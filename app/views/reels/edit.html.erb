@@ -2,12 +2,7 @@
 
 <h2><%= @reel.title %></h2>
 
-<nav>
-  <ul>
-    <li><%= link_to 'Browse', reel_path(@reel) %></li>
-    <li><%= link_to 'Arrange', edit_reel_path(@reel) %></li>
-  </ul>
-</nav>
+<%= render 'shared/nav' %>
 
 <%= render 'form' %>
 

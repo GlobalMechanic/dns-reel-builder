@@ -2,19 +2,7 @@
 
 <h2><%= @reel.title %></h2>
 
-<nav>
-  <ul>
-    <li><%= link_to 'Browse', reel_path(@reel) %></li>
-    <li><%= link_to 'Arrange', edit_reel_path(@reel) %></li>
-  </ul>
-</nav>
-
-<% if @search %>
-  <%= form_for(@search, :url => reel_path(@reel)) do |f| %>
-    <div>Title: <%= f.text_field :title_contains %></div>
-    <div>Client: <%= f.text_field :client_contains %></div>
-    <%= f.submit %>
-  <% end %>
-<% end %>
+<%= render 'shared/nav' %>
+<%= render 'shared/search' %>
 
 <%= render 'clips' %>

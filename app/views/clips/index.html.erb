@@ -1,6 +1,7 @@
 <% if @search %>
   <%= form_for @search do |f| %>
     <div>Title: <%= f.text_field :title_contains %></div>
+    <div>Client: <%= f.text_field :client_contains %></div>
     <%= f.submit %>
   <% end %>
 <% end %>

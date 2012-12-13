@@ -1,7 +1,13 @@
-<%= link_to 'Back to Reels', reels_path %>
-<%= link_to 'Show Reel', @clip %>
+<p id="notice"><%= notice %></p>
 
-<h1>Editing reel</h1>
+<h2><%= @reel.title %> by <%= @reel.user.name %></h2>
+
+<nav>
+  <ul>
+    <li><%= link_to 'Browse', reel_path(@reel) %></li>
+    <li><%= link_to 'Arrange', edit_reel_path(@reel) %></li>
+  </ul>
+</nav>
 
 <%= render 'form' %>
 

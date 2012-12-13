@@ -32,18 +32,6 @@ class ReelsController < ApplicationController
     end
   end
 
-  # GET /reels/1/filter
-  # GET /reels/1/filter.json
-  def filter
-    @reel = Reel.find(params[:id])
-    @clips = @reel.clips.order('"order"')
-    set_current_reel_slug @reel.id
-    respond_to do |format|
-      format.html { render :template => "reels/show.html.erb" } # resuse show.html.erb for now
-      format.json { render json: @reel }
-    end
-  end
-
   # POST /reels/1/sort.json
   def sort
     params[:order].each_with_index do |id, index|
@@ -79,6 +67,8 @@ class ReelsController < ApplicationController
   # GET /reels/1/edit
   def edit
     @reel = Reel.find(params[:id])
+    @clips = @reel.clips.order('"order"')
+    set_current_reel_slug @reel.id
   end
 
   # POST /reels
@@ -106,48 +96,7 @@ class ReelsController < ApplicationController
 
     respond_to do |format|
       if @reel.update_attributes(params[:reel])
-        format.html { redirect_to @reel, notice: 'Reel was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @reel.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # GET /reels/1/add?clip_id=1
-  # GET /reels/1/add.json?clip_id=1
-  def add
-    @reel = Reel.find(params[:id])
-    next_order = @reel.reel_clips.length > 0 ? @reel.reel_clips.last.order.to_i + 1 : 0
-    
-    @clip = Clip.find(params[:clip_id])
-    @reel_clip = @reel.reel_clips.new
-    @reel_clip.clip_id = @clip.id
-    @reel_clip.order = next_order
-
-    puts @reel_clip.inspect
-
-    respond_to do |format|
-      if @reel_clip.save
-        format.html { redirect_to @reel, notice: 'Reel was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @reel.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PUT /reels/1/remove?1
-  # PUT /reels/1/remove.json?1
-  def remove
-    @reel = Reel.find(params[:id])
-    @clip = Clip.find(params[:clip_id])
-
-    respond_to do |format|
-      if @reel.clips.delete(@clip)
-        format.html { redirect_to @reel, notice: 'Reel was successfully updated.' }
+        format.html { redirect_to edit_reel_path(@reel), notice: 'Reel was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

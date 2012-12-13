@@ -9,10 +9,9 @@ AssetManager::Application.routes.draw do
   resources :versions
 
   resources :reels do
+    match ':clip_id' => 'reel_clips#add', :constraints => { :clip_id => /\d+/ }, :via => [:post, :get]
+    match ':clip_id' => 'reel_clips#remove', :constraints => { :clip_id => /\d+/ }, :via => [:delete]
     member do
-      get 'add'
-      get 'remove'
-      get 'filter'
       post 'sort'
     end
   end

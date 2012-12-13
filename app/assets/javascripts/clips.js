@@ -9,13 +9,21 @@ $(document).ready(function() {
     var clipID = $clip.attr('id').replace(/clip-/, '');
     $clip.toggleClass('add').toggleClass('remove').addClass('loading');
     if ($clip.hasClass('add')) {
-      $.get('/reels/' + gm.current_reel_slug + '/remove.json', { clip_id: clipID }, function(data) {
-        $clip.removeClass('loading');
+      $.ajax({
+        url: '/reels/' + gm.current_reel_slug + '/' + clipID + '.json',
+        type: 'DELETE',
+        success: function(data) {
+          $clip.removeClass('loading');
+        }
       });
     }
     else if ($clip.hasClass('remove')) {
-      $.get('/reels/' + gm.current_reel_slug + '/add.json', { clip_id: clipID }, function(data) {
-        $clip.removeClass('loading');
+      $.ajax({
+        url: '/reels/' + gm.current_reel_slug + '/' + clipID + '.json',
+        type: 'POST',
+        success: function(data) {
+          $clip.removeClass('loading');
+        }
       });
     }
     return false;

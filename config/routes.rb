@@ -9,8 +9,8 @@ AssetManager::Application.routes.draw do
   resources :versions
 
   resources :reels do
-    match ':clip_id' => 'reel_clips#add', :constraints => { :clip_id => /\d+/ }, :via => [:post, :get]
-    match ':clip_id' => 'reel_clips#remove', :constraints => { :clip_id => /\d+/ }, :via => [:delete]
+    match ':clip_id' => 'reel_clips#add', :constraints => { :clip_id => /\d+/ }, :via => [:post, :get], :as => :clip
+    match ':clip_id' => 'reel_clips#remove', :constraints => { :clip_id => /\d+/ }, :via => [:delete], :as => :clip
     member do
       post 'sort'
     end

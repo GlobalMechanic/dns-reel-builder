@@ -2,7 +2,9 @@
   <ul>
     <li><%= link_to 'Browse', clips_url %></li>
     <% if current_user.current_reel_slug? %>
-    <li><%= link_to 'Arrange', edit_reel_path(current_user.current_reel_slug) %></li>
+    <li><%= link_to current_user.current_reel_slug, edit_reel_path(current_user.current_reel_slug) %></li>
+    <% else %>
+    <li><%= link_to 'Create my Reel', new_reel_url %></li>
     <% end %>
   </ul>
 </nav>

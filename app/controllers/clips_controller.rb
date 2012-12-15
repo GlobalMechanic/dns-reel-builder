@@ -5,6 +5,14 @@ class ClipsController < ApplicationController
   def index
     @search = Clip.search(params[:search])
     @clips = @search.order('title')
+    if @current_reel
+      @reel = @current_reel
+    else
+      @reel = current_user.reels.create
+      current_user.current_reel_slug = @reel.id
+      current_user.save
+      @current_reel = @reel
+    end
     
     # per_page = 20
     # @clips = Clip.limit(per_page).offset(params[:page] ? params[:page].to_i * per_page : 0)

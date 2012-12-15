@@ -1,15 +1,9 @@
 class ReelsController < ApplicationController
 
-  # Helpers
-  def set_current_reel_slug(reel_slug)
-    current_user.current_reel_slug = reel_slug
-    current_user.save
-  end
-
   # GET /reels
   # GET /reels.json
   def index
-    @reels = Reel.all
+    @reels = Reel.where("title <> ''")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -21,8 +15,7 @@ class ReelsController < ApplicationController
   # GET /reels/1.json
   def show
     @reel = Reel.find(params[:id])
-    @search = Clip.search(params[:search])
-    @clips = @search.order('title')
+    @clips = @reel.clips.order('"order"')
 
     set_current_reel_slug @reel.id
     
@@ -52,6 +45,29 @@ class ReelsController < ApplicationController
     end
     
   end
+
+  def close
+    current_user.current_reel_slug = nil
+    respond_to do |format|
+      if current_user.save
+        format.html { redirect_to clips_url }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to clips_url, notice: 'For some reason the reel wouldn\'t close. <a href="/reels">Open a new one?</a>'.html_safe }
+        format.json { render json: "Couldn't close reel.", status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def open
+    # @reel = Reel.find(params[:id])
+    set_current_reel_slug params[:id]
+    respond_to do |format|
+      format.html { redirect_to edit_reel_path params[:id] }
+      format.json { render json: @reel }
+    end
+  end
+
 
   # GET /reels/new
   # GET /reels/new.json
@@ -115,6 +131,12 @@ class ReelsController < ApplicationController
       format.html { redirect_to reels_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def set_current_reel_slug(reel_slug)
+    current_user.current_reel_slug = reel_slug
+    current_user.save
   end
 
 end

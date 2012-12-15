@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
 
   has_many :reels
 
+  #:before_logout delete_temp_reel
+
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -23,5 +25,9 @@ class User < ActiveRecord::Base
     else
       where(conditions).first
     end
+  end
+
+  def self.delete_temp_reel
+    current_user.reels.delete_all(:title => nil)
   end
 end

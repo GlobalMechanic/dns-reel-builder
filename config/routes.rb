@@ -1,6 +1,7 @@
 AssetManager::Application.routes.draw do
   devise_for :users
 
+  # Restrict this.
   scope "/admin" do
     resources :users #, :only => [:index, :edit]
   end
@@ -13,6 +14,8 @@ AssetManager::Application.routes.draw do
     match ':clip_id' => 'reel_clips#remove', :constraints => { :clip_id => /\d+/ }, :via => [:delete], :as => :clip
     member do
       post 'sort'
+      get 'close'
+      get 'open'
     end
   end
 

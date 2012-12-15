@@ -1,10 +1,6 @@
 <nav>
   <ul>
     <li><%= link_to 'Browse', clips_url %></li>
-    <% if current_user.current_reel_slug? %>
-    <li><%= link_to current_user.current_reel_slug, edit_reel_path(current_user.current_reel_slug) %></li>
-    <% else %>
-    <li><%= link_to 'Create my Reel', new_reel_url %></li>
-    <% end %>
+    <li><%= link_to @current_reel.title? ? @current_reel.title : 'Create my Reel', edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) if @current_reel.title? %></li>
   </ul>
 </nav>

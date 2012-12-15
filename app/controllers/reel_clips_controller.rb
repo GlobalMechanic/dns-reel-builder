@@ -15,7 +15,7 @@ class ReelClipsController < ApplicationController
 
     respond_to do |format|
       if @reel_clip.save
-        format.html { redirect_to edit_reel_path(@reel), notice: 'Reel was successfully updated.' }
+        format.html { redirect_to reel_path(@reel, :anchor => 'clip-' + @clip.id.to_s), notice: 'Reel was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -32,7 +32,7 @@ class ReelClipsController < ApplicationController
 
     respond_to do |format|
       if @reel.clips.delete(@clip)
-        format.html { redirect_to edit_reel_path(@reel), notice: 'Reel was successfully updated.' }
+        format.html { redirect_to reel_path(@reel, :anchor => 'clip-' + @clip.id.to_s), notice: 'Reel was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

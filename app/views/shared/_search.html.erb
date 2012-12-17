@@ -1,11 +1,17 @@
 <% if @search %>
   <%= form_for @search do |f| %>
-  <!-- then need to be able to group results -->
     <%= select_tag(:where, options_for_select([['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tags', 'keywords']], params[:where])) %>
-    <%= text_field_tag :contains, params[:contains] %>
-    <% # f.collection_select :client_equals, Clip.all.map(&:client).uniq, :to_s, :to_s, :include_blank => true %>
-    <%= f.submit %>
+    <%= f.text_field :title_contains, :class => 'facet' %>
+    <%= f.collection_select(:director_equals, Clip.all.map(&:director).uniq, :to_s, :to_s, {:include_blank => 'All Directors'}, {:class => 'facet'}) %>
+    <%= f.collection_select(:client_equals, Clip.all.map(&:client).uniq, :to_s, :to_s, {:include_blank => 'All Clients'}, {:class => 'facet'}) %>
+    <%= f.submit 'Search' %>
   <% end %>
 <% end %>
 
 <%= sort_link @search, :title %>
+
+<%
+ # f.collection_select :director_equals, Clip.all.map(&:director).uniq, :to_s, :titleize, :include_blank => true
+ # f.collection_select :client_equals, Clip.all.map(&:client).uniq, :to_s, :to_s, :include_blank => true
+ # f.collection_select :technique_equals, Clip.all.map(&:technique_list).uniq, :to_s, :to_s, :include_blank => true
+ %>

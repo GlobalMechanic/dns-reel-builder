@@ -24,6 +24,21 @@ $(document).ready(function() {
     return false;
   });
 
+  var nameToId = {
+    'title': '#search_title_contains',
+    'director': '#search_director_equals',
+    'client': '#search_client_equals',
+  };
+  $('#clip_search .facet').hide();
+  $(nameToId[$('#clip_search #where').val()]).show();
+  $('#clip_search #where').change(function(e) {
+    $('#clip_search .facet').hide();
+    $(nameToId[$(this).val()]).show();
+  });
+  $('#clip_search').submit(function() {
+    $('#clip_search .facet').not(nameToId[$('#clip_search #where').val()]).val('');
+  });
+
   if (gm.controller === 'reels' && gm.action === 'edit') {
     // Clip drag events.
     var $dragged = null;

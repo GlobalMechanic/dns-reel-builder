@@ -1,3 +1,9 @@
+#clip_search #where,
+#clip_search .facet,
+#clip_search input[type='submit'] {
+  display: inline-block;
+}
+
 .meta img {
   float: left;
   margin-right: 10px;

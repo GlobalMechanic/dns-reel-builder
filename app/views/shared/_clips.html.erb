@@ -1,3 +1,4 @@
+<% # draggable = params[:controller] === 'reels' && params[:action] === 'edit' ? true : false %>
 <div id="reel-<%= @reel.slug %>" class="reel-id clips">
   <% @clips.each_with_index do |clip, index| %>
   <div id="slot-<%= index %>" class="slot">

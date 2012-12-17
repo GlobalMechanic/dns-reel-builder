@@ -4,7 +4,10 @@
   <title>Asset Manager</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <script type="text/javascript">
-    var gm = gm || {};
+    var gm = gm || {
+      controller: '<%= params[:controller] %>',
+      action: '<%= params[:action] %>'
+    };
     <% if current_user %>
     gm.current_reel_slug = '<%= current_user.current_reel_slug? ? current_user.current_reel_slug : 'null' %>';
     <% end %>
@@ -12,7 +15,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= params[:controller] %> <%= params[:action] %>">
   <div class="container">
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

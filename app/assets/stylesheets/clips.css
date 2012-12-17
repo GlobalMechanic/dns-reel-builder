@@ -16,12 +16,9 @@
   display: block;
   float: left;
   margin: 0 0 4px 0;
-  cursor:hand;
-  cursor:grab;
-  cursor:-moz-grab;
-  cursor:-webkit-grab;
 }
-.clip img {
+body.reels.edit .clip,
+body.reels.edit .clip img {
   cursor:hand;
   cursor:grab;
   cursor:-moz-grab;

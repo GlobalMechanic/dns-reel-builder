@@ -6,6 +6,11 @@
 .clips {
   clear: both;
 }
+
+.clips h2 {
+  clear: both;
+  padding-top: 1em;
+}
 .clip  {
   color: #222;
   background: #eee;

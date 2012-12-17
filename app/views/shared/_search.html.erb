@@ -1,9 +1,6 @@
 <% if @search %>
   <%= form_for @search do |f| %>
-  <!-- need a select list with attributes to search by
-  then a search box
-  then a submit button
-  then need to be able to group results -->
+  <!-- then need to be able to group results -->
     <%= select_tag(:where, options_for_select([['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tags', 'keywords']], params[:where])) %>
     <%= text_field_tag :contains, params[:contains] %>
     <% # f.collection_select :client_equals, Clip.all.map(&:client).uniq, :to_s, :to_s, :include_blank => true %>

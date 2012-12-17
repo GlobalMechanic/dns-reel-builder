@@ -11,10 +11,7 @@
   margin-right: 10px;
 }
 
-.clips {
-  clear: both;
-}
-
+.clips { clear: both; }
 .clips h2 {
   clear: both;
   padding-top: 1em;
@@ -38,9 +35,7 @@ body.reels.edit .clip img {
   cursor:-webkit-grab;
 }
 
-.clip.dragged {
-  opacity: 0.4;
-}
+.clip.dragged { opacity: 0.4; }
 
 .clip a { text-decoration: none; }
 .clip a:hover { color: #666; }
@@ -100,8 +95,4 @@ body.reels.edit .clip img {
 }
 .clips.dragging .slot .region {
   display: block;
-}
-
-.dropped {
-  background: red;
 }

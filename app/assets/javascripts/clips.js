@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
   // Clip add/remove click events.
   $('.clip .reel').click(function(e) {
     var $clip = $(this);
@@ -24,6 +25,7 @@ $(document).ready(function() {
     return false;
   });
 
+  // Dynamic search form.
   var nameToId = {
     'title': '#search_title_contains',
     'director': '#search_director_equals',
@@ -38,6 +40,7 @@ $(document).ready(function() {
     $('#clip_search .facet').not(nameToId[$('#clip_search #where').val()]).val('');
   });
 
+  // Dragging and dropping for reels.
   if (gm.controller === 'reels' && gm.action === 'edit') {
     // Clip drag events.
     var $dragged = null;

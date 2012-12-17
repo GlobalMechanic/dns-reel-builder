@@ -29,11 +29,10 @@ $(document).ready(function() {
     'director': '#search_director_equals',
     'client': '#search_client_equals',
   };
-  $('#clip_search .facet').hide();
-  $(nameToId[$('#clip_search #where').val()]).show();
+  $(nameToId[$('#clip_search #where').val()]).addClass('show');
   $('#clip_search #where').change(function(e) {
-    $('#clip_search .facet').hide();
-    $(nameToId[$(this).val()]).show();
+    $('#clip_search .facet').removeClass('show');
+    $(nameToId[$(this).val()]).addClass('show');
   });
   $('#clip_search').submit(function() {
     $('#clip_search .facet').not(nameToId[$('#clip_search #where').val()]).val('');

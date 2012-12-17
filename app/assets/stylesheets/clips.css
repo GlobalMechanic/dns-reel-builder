@@ -3,6 +3,8 @@
 #clip_search input[type='submit'] {
   display: inline-block;
 }
+#clip_search .facet { display: none; }
+#clip_search .facet.show { display: inline-block; }
 
 .meta img {
   float: left;

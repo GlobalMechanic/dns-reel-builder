@@ -3,7 +3,8 @@ class ClipsController < ApplicationController
   # GET /clips
   # GET /clips.json
   def index
-    @search = Clip.search({ params[:where] + '_contains' => params[:contains]})
+    search_criteria = params[:where] && params[:contains] ? { params[:where] + '_contains' => params[:contains]} : nil
+    @search = Clip.search(search_criteria)
     #@search = Clip.search(params[:search])
     @clips = @search.order('title')
     if @current_reel

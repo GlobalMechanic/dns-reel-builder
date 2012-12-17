@@ -1,8 +1,8 @@
 <div id="reel-<%= @reel.slug %>" class="reel-id clips">
-  <div id="slot-0" class="slot">
+  <% @clips.each_with_index do |clip, index| %>
+  <div id="slot-<%= index %>" class="slot">
     <div class="region"></div>
   </div>
-  <% @clips.each_with_index do |clip, index| %>
   <div class="clip" draggable="true">
     <% if @reel.clips.exists?(clip) %>
     <%= link_to 'Remove from Reel', reel_clip_path(@reel, clip), method: :delete, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel remove' %>
@@ -17,8 +17,8 @@
       <!-- <img draggable="false" src="/assets/188x106.png" alt="Placeholder"> -->
     <% end %>
   </div>
-  <div id="slot-<%= index + 1 %>" class="slot">
+  <% end %>
+  <div id="slot-<%= @clips.length  %>" class="slot last">
     <div class="region"></div>
   </div>
-  <% end %>
 </div>

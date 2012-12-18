@@ -4,11 +4,17 @@ class ClipsController < ApplicationController
   # GET /clips.json
   def index
     @search = Clip.search(params[:search])
-    if ['technique', 'keyword'].include? params[:where]
-      @clips = @search.order((['director', 'client'].include? params[:where].to_s) ? 'LOWER(' + params[:where] + ') ASC, title ASC' : 'title').uniq
+    @reels_created = Reel.where("title <> ''").order('created_at DESC').limit(5)
+    @reels_updated = Reel.where("title <> ''").order('updated_at DESC').limit(5)
+
+    if ['director', 'client'].include? params[:where]
+      @clips = @search.order('LOWER(' + params[:where] + ') ASC, title ASC')
+    elsif ['technique', 'keyword'].include? params[:where]
+      @clips = @search.order('title').uniq  
     else
-      @clips = @search.order((['director', 'client'].include? params[:where].to_s) ? 'LOWER(' + params[:where] + ') ASC, title ASC' : 'title')
+      @clips = @search.order('title')
     end
+
     if @current_reel
       @reel = @current_reel
     else

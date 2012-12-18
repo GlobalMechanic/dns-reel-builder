@@ -1,4 +1,4 @@
-<nav>
+<nav id="secondary">
   <ul>
     <li><%= link_to 'Browse', clips_url %></li>
     <li><%= link_to @current_reel.title? ? @current_reel.title : 'Create my Reel', edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) if @current_reel.title? %></li>

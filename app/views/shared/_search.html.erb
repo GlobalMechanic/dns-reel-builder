@@ -1,9 +1,11 @@
 <% if @search %>
   <%= form_for @search do |f| %>
-    <%= select_tag(:where, options_for_select([['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tags', 'keywords']], params[:where])) %>
+    <%= select_tag(:where, options_for_select([['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tag', 'keyword']], params[:where])) %>
     <%= f.text_field :title_contains, :class => 'facet' %>
-    <%= f.collection_select(:director_equals, Clip.all.map(&:director).uniq, :to_s, :to_s, {:include_blank => 'All Directors'}, {:class => 'facet'}) %>
-    <%= f.collection_select(:client_equals, Clip.all.map(&:client).uniq, :to_s, :to_s, {:include_blank => 'All Clients'}, {:class => 'facet'}) %>
+    <%= f.collection_select(:director_equals, Clip.all.map {|clip| clip[:director].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Directors'}, {:class => 'facet'}) %>
+    <%= f.collection_select(:client_equals, Clip.all.map(&:client).uniq.reject!(&:blank?).map{|client| client.titleize }.sort, :downcase, :to_s, {:include_blank => 'All Clients'}, {:class => 'facet'}) %>
+    <%= f.collection_select(:techniques_taggings_tag_name_contains, Clip.technique_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Techniques'}, {:class => 'facet'}) %>
+    <%= f.collection_select(:keywords_taggings_tag_name_contains, Clip.keyword_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Keywords'}, {:class => 'facet'}) %>
     <%= f.submit 'Search' %>
   <% end %>
 <% end %>

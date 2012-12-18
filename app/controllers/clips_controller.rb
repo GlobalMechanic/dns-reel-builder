@@ -4,7 +4,11 @@ class ClipsController < ApplicationController
   # GET /clips.json
   def index
     @search = Clip.search(params[:search])
-    @clips = @search.order((['director', 'client'].include? params[:where].to_s) ? params[:where] + ' ASC, title ASC' : 'title')
+    if ['technique', 'keyword'].include? params[:where]
+      @clips = @search.order((['director', 'client'].include? params[:where].to_s) ? 'LOWER(' + params[:where] + ') ASC, title ASC' : 'title').uniq
+    else
+      @clips = @search.order((['director', 'client'].include? params[:where].to_s) ? 'LOWER(' + params[:where] + ') ASC, title ASC' : 'title')
+    end
     if @current_reel
       @reel = @current_reel
     else

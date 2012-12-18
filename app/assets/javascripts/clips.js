@@ -30,6 +30,8 @@ $(document).ready(function() {
     'title': '#search_title_contains',
     'director': '#search_director_equals',
     'client': '#search_client_equals',
+    'technique': '#search_techniques_taggings_tag_name_contains',
+    'keyword': '#search_keywords_taggings_tag_name_contains'
   };
   $(nameToId[$('#clip_search #where').val()]).addClass('show');
   $('#clip_search #where').change(function(e) {

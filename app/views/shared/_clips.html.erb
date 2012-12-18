@@ -5,7 +5,7 @@
   <% if ['director', 'client'].include? params[:where] %>
     <% if previous_clip == nil || clip[params[:where]] != previous_clip %>
     <% previous_clip = clip[params[:where]] %>
-    <h2><%= clip[params[:where]].titleize %></h2>
+    <h2><%= clip[params[:where]].to_s.titleize %></h2>
     <% end %>
   <% end %>
   <div id="slot-<%= index %>" class="slot">

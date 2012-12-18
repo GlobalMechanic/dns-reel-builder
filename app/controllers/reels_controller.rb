@@ -84,8 +84,6 @@ class ReelsController < ApplicationController
   def edit
     @reel = Reel.find(params[:id])
     @clips = @reel.clips.order('"order"')
-    @reels_created = Reel.where("title <> ''").order('created_at DESC').limit(5)
-    @reels_updated = Reel.where("title <> ''").order('updated_at DESC').limit(5)
     set_current_reel_slug @reel.id
   end
 

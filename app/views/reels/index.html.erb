@@ -1,22 +1,21 @@
-<h1>Listing reels</h1>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Created by</th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @reels.each do |reel| %>
-  <tr>
-    <td><%= link_to reel.title, open_reel_path(reel) %></td>
-    <td><%= reel.user.name %></td>
-    <td><%= link_to 'Edit', edit_reel_path(reel) %></td>
-    <td><%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+<div id="reel-<%= reel.slug %>" class="reel-id clips">
+  <h2><%= link_to reel.title, open_reel_path(reel) %></h2>
+  <% reel.clips.each_with_index do |clip, index| %>
+  <div class="clip" draggable="true">
+    <% if reel.clips.exists?(clip) %>
+    <%= link_to 'Remove from Reel', reel_clip_path(reel, clip), method: :delete, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel remove' %>
+    <% else %>
+    <%= link_to 'Add to Reel', reel_clip_path(reel, clip), method: :post, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel add' %>
+    <% end %>
+
+    <%= link_to clip, :draggable => false do %>
+      <div class="title"><%= clip.title %></div>
+      <!-- <img draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" /> -->
+      <img draggable="false" src="http://shielded-anchorage-8580.herokuapp.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106" />
+      <!-- <img draggable="false" src="/assets/188x106.png" alt="Placeholder"> -->
+    <% end %>
+  </div>
+  <% end %>
+</div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Reel', new_reel_path %>

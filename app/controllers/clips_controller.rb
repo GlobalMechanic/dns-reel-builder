@@ -4,8 +4,6 @@ class ClipsController < ApplicationController
   # GET /clips.json
   def index
     @search = Clip.search(params[:search])
-    @reels_created = Reel.where("title <> ''").order('created_at DESC').limit(5)
-    @reels_updated = Reel.where("title <> ''").order('updated_at DESC').limit(5)
 
     if ['director', 'client'].include? params[:where]
       @clips = @search.order('LOWER(' + params[:where] + ') ASC, title ASC')

@@ -1,5 +1,5 @@
 <% # draggable = params[:controller] === 'reels' && params[:action] === 'edit' ? true : false %>
-<div id="reel-<%= @reel.slug %>" class="reel-id clips">
+<div id="reel-<%= @reel.slug %>" class="reel-id clips slots">
   <% previous_clip = nil %>
   <% @clips.each_with_index do |clip, index| %>
   <% if ['director', 'client'].include? params[:where] %>

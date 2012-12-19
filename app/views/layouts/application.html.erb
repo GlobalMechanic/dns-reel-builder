@@ -15,11 +15,8 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body class="<%= params[:controller] %> <%= params[:action] %>">
+<body class="<%= params[:controller].parameterize %> <%= params[:action].parameterize %>">
   <div class="container">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-
     <% if user_signed_in? %>
     <nav class="clearfix">
       <ul id="primary">
@@ -56,6 +53,12 @@
         </div>
       </div>
     </nav>
+    <% end %>
+    <% if notice %>
+    <p class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+    <p class="alert"><%= alert %></p>
     <% end %>
 
     <%= yield %>

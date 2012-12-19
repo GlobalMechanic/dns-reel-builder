@@ -5,6 +5,13 @@ class ClipsController < ApplicationController
   def index
     @search = Clip.search(params[:search])
 
+    serach_terms = params[:search].values.reject!(&:blank?)
+    if !params[:search]
+      @title = 'Browse All'
+    elsif params[:where] && !serach_terms.empty?
+      @title = params[:where].titleize + ': "' + serach_terms.join(', ') + '"'
+    end
+
     if ['director', 'client'].include? params[:where]
       @clips = @search.order('LOWER(' + params[:where] + ') ASC, title ASC')
     elsif ['technique', 'keyword'].include? params[:where]

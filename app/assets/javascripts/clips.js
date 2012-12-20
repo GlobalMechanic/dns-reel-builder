@@ -25,6 +25,29 @@ $(document).ready(function() {
     return false;
   });
 
+  $('.clip .default, .clip .title').click(function(e) {
+    if ($(this).parents('.clip').hasClass('open')) {
+      $(this).parents('.clip').removeClass('open');
+      $(this).parent().find('video').each(function() {
+        this.pause();
+        if (this.currentTime > 0) {
+          this.currentTime = 0;
+        }
+      });
+    }
+    else {
+      $('.clip.open video').each(function () {
+          this.pause();
+          if (this.currentTime > 0) {
+            this.currentTime = 0;
+          }
+      });
+      $('.clip.open').removeClass('open');
+      $(this).parents('.clip').addClass('open');
+      $(this).parent().find('video').get(0).play();
+    }
+  });
+
   // Dynamic search form.
   var nameToId = {
     'title': '#search_title_contains',

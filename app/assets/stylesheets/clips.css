@@ -26,7 +26,6 @@
   background: #eee;
   width: 188px;
   height: 146px;
-  overflow: hidden;
   position: relative;
   display: block;
   float: left;
@@ -75,6 +74,37 @@ body.reels.edit .clip img {
 .clip .reel.add:hover { background-position: top right; }
 .clip .reel.remove { background-position: bottom left; }
 .clip .reel.remove:hover { background-position: bottom right; }
+
+.clip .extended {
+  display: none;
+}
+.clip.open .extended {
+  width: 380px;
+  height: 296px;
+  display: block;
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+.clips .clip:nth-child(5n+5) .extended {
+  left: auto;
+  right: 0;
+}
+
+.clip .extended .title {
+  background: #ffe;
+  width: auto;
+}
+.clip.open .reel {
+  right: -192px;
+  z-index: 2;
+  background-color: #ffe;
+}
+.clips .clip:nth-child(5n+5).open .reel {
+  right: 0;
+}
 
 .slot {
   display: block;

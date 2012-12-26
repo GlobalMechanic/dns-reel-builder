@@ -1,5 +1,19 @@
 <h3><%= @reel.title %></h3>
-print convertTokenURLs($pagePlaylist['page']['description']);
-<br>
-print $pageUICargo;
+description
 
+<div class="clips clearfix">
+<% @reel.clips.each_with_index do |clip, index| %>
+  <% if index % 4 === 0 && index != 0 %>
+  </div>
+  <div class="clips clearfix">
+  <% end %>
+
+  <div class="clip">
+    <a href="#">
+      <img class="default" draggable="false" src="/assets/188x106.png" alt="Placeholder">
+      <div class="text"><%= clip.title %></div>
+    </a>
+  </div>
+
+<% end %>
+</div>

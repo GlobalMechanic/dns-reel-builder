@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @reel.title %></title>
+  <meta name="viewport" content="width=1050">
+  <%= stylesheet_link_tag    "public_reel", :media => "all" %>
+  <%= javascript_include_tag "public_reel" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <body>
+    <header>
+      <h1 class="logo"><a href="/"><%= @reel.title %></a></h1>
+      <ul class="contact">
+        <li><a class="email" href="mailto:tina@globalmechanic.com">Studio</a> <a class="tel" href="tel:+16047337475">604 733 7475</a></li>
+        <li><a class="email" href="mailto:info@lizlainereps.com?subject=Re:%20Global%20Mechanic">Reps USA</a> <a class="tel" href="tel:+13123291111">312 329 1111</a></li>
+        <li><a class="email" href="mailto:lisa@hestyreps.com?subject=Re:%20Global%20Mechanic">Reps CANADA</a> <a class="tel" href="tel:+14164820411">416 482 0411</a></li>
+      </ul>
+    </header>
+    <nav class="main">
+      <ul>
+        <li class="work"><a href="/work">Work</a></li>
+        <li class="people"><a href="/people">People</a></li>
+        <li class="mechanica"><a href="http://blog.globalmechanic.com">Mechanica</a></li>
+      </ul>
+    </nav>
+    <section>
+      <div class="tray reel"><div class="inside">
+        <%= yield %>
+      </div></div>
+    </section>
+  <footer>
+    <nav class="sitemap">
+      <div class="category clearfix">
+        <h2><a href="/work">Work</a></h2>
+        <ul>
+          <li><a href="/work/commercials">Commercials</a></li>
+          <li><a href="/work/films">Films</a></li>
+          <li><a href="/work/series">TV Series</a></li>
+          <li><a href="/work/titles">Titles</a></li>
+          <li><a href="/work/digital">Digital</a></li>
+          <li><a href="/work/performance">Performance</a></li>
+        </ul>
+      </div>
+      <div class="category clearfix">
+        <h2><a href="/people">People</a></h2>
+        <ul>
+<?php $directors = GetDirectors();
+  foreach ($directors as $director):
+?>
+          <li><a href="/people/<?php print str_replace(' ', '_', $director['name']); ?>"><?php print ucwords($director['name_short']); ?></a></li>
+<?php endforeach; ?>
+        </ul>
+      </div>
+      <div class="category clearfix">
+        <h2><a href="http://blog.globalmechanic.com">Mechanica</a></h2>
+        <ul>
+          <li><a href="http://blog.globalmechanic.com">Blog</a></li>
+          <li class="external"><a href="http://www.facebook.com/GlobalMechanicMedia">Facebook</a></li>
+          <li class="external"><a href="https://vimeo.com/globalmechanicmedia/">Vimeo</a></li>
+          <li class="external"><a href="http://www.youtube.com/user/globalmechanic/">Youtube</a></li>
+          <li class="external"><a href="https://twitter.com/GlobalMechanic/">Twitter</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="close">
+      <h3 class="logo"><a href="/">Global Mechanic</a></h3>
+      <a href="https://maps.google.ca/maps?fb=1&amp;gl=ca&amp;hnear=0x548673f143a94fb3:0xbb9196ea9b81f38b,Vancouver,+BC&amp;cid=0,0,9816311573480716717&amp;t=m&amp;z=16&amp;iwloc=A" class="adr">
+        <div class="street-address">#300 - 341 Water Street</div>
+        <span class="locality">Vancouver</span>,
+        <abbr class="region" title="British Columbia">BC</abbr>,
+        <span class="postal-code">V6B 1B2</span>
+        <div class="country-name">Canada</div>
+      </a>
+      <ul class="contact">
+        <li><a class="email" href="mailto:tina@globalmechanic.com">Studio</a> <a class="tel" href="tel:+16047337475">604 733 7475</a></li>
+        <li><a class="email" href="mailto:info@lizlainereps.com?subject=Re:%20Global%20Mechanic">Reps USA</a> <a class="tel" href="tel:+13123291111">312 329 1111</a></li>
+        <li><a class="email" href="mailto:lisa@hestyreps.com?subject=Re:%20Global%20Mechanic">Reps CANADA</a> <a class="tel" href="tel:+14164820411">416 482 0411</a></li>
+      </ul>
+    </div>
+  </footer>
+</body>
+</html>

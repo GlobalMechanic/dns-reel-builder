@@ -16,11 +16,9 @@ class ReelsController < ApplicationController
   def show
     @reel = Reel.find(params[:id])
     @clips = @reel.clips.order('"order"')
-
-    set_current_reel_slug @reel.id
     
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render layout: 'public_reel' }
       format.json { render json: @reel }
     end
   end

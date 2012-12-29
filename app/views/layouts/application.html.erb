@@ -54,7 +54,7 @@
         </div>
       </div>
     </nav>
-    <% if @search %>
+    <% if @search && Clip.count > 0 %>
       <%= form_for @search do |f| %>
         <%= select_tag(:where, options_for_select([['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tag', 'keyword']], params[:where])) %>
         <%= f.text_field :title_contains, :class => 'facet' %>

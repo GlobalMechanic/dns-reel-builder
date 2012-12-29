@@ -12,7 +12,9 @@
  *= require layout
  *= require skeleton
  *= require_self
- *= require_tree .
+ *= require clips
+ *= require reel
+ *= require scaffolds
  */
 
 body { margin-top: 160px; }

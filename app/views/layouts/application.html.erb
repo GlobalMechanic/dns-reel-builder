@@ -30,10 +30,20 @@
       </ul>
       <ul id="secondary">
         <li><%= link_to 'Browse', clips_url %></li>
-        <li><%= link_to @current_reel.title? ? @current_reel.title : 'Create my Reel', edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) if @current_reel.title? %></li>
+        <li>
+        <% if @current_reel.title? %>
+          <%= link_to @current_reel.title, edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) %>
+        <% else %>
+          <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel' %>
+          <%= form_for @current_reel do |f| %>
+            <%= f.text_field :title %>
+            <%= f.submit 'Create' %>
+          <% end %>
+        <% end %>
+        </li>
       </ul>
       <div class="drawer">
-        <a class="open-reel" href="#">Open A Reel</a>
+        <%= link_to 'Open a Reel', reels_path, :id => 'open-reel' %>
         <div class="reels eight columns">
           <div class="four columns alpha">
             <div class="title">Recently Created</div>

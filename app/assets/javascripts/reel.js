@@ -1,6 +1,6 @@
 $(document).ready(function() {
   
-  $('.drawer .open-reel').click(function() {
+  $('#open-reel, #create-reel').click(function() {
     $(this).parent().toggleClass('open');
     return false;
   });

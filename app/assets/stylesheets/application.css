@@ -49,7 +49,7 @@ nav li { display: inline-block; }
   padding: 5px 0px;
 }
 .drawer { float: right; position: relative; }
-.drawer .open-reel {
+.drawer #open-reel {
   display: inline-block;
   padding: 5px 10px;
 }
@@ -64,8 +64,30 @@ nav li { display: inline-block; }
   background: rgba(239,239,239,0.95);
 }
 .drawer.open .reels { display: block; }
-.drawer.open .open-reel {
+.drawer.open #open-reel {
   background: #efefef;
+}
+
+#secondary li form {
+  display: none;
+}
+#secondary li.open {
+  position: relative;
+}
+#secondary li.open form {
+  width: 300px;
+  display: block;
+  position: absolute;
+  z-index: 1;
+  top: 20px;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  background: rgba(239,239,239,0.95);
+}
+#secondary li.open input[type='text'] {
+  display: inline-block;
 }
 
 footer { clear: both; }

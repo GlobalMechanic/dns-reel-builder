@@ -107,10 +107,13 @@ class ReelsController < ApplicationController
   # PUT /reels/1.json
   def update
     @reel = Reel.find(params[:id])
-
+    @title = @reel.title?
+    unless @title
+      @reel.created_at = Time.now
+    end
     respond_to do |format|
       if @reel.update_attributes(params[:reel])
-        format.html { redirect_to edit_reel_path(@reel), notice: 'Reel was successfully updated.' }
+        format.html { redirect_to edit_reel_path(@reel), notice: @title ? 'Reel was successfully updated.' : 'Reel was successfully created.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

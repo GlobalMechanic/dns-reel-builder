@@ -27,4 +27,6 @@ public_reel/images/share.png: public_reel/images/share-e8944cfe05cabe342d0d90424
 public_reel/images/white-tiles.jpg: public_reel/images/white-tiles-80464c086e7cd564958af4ea09b5c4ad.jpg
 rails.png: rails-be8732dac73d845ac5b142c8fb5f9fb0.png
 application.js: application-cb9210d40492a8ac0223edd2c81f26d8.js
+public_reel.js: public_reel-2f4d412ba12b0f7eac38ef64252f9cb8.js
 application.css: application-8f2ad3be41f04cd9c3d035b6d63b44e7.css
+public_reel.css: public_reel-421ac698d650aa06eb41090835b7a519.css

@@ -118,7 +118,7 @@ nav.main a {
   text-decoration: none;
   color: rgba(255, 255, 255, 0.5);
   *color: #9f9f9f;
-  height 96px;
+  height: 96px;
   padding-top: 5px;
   display: block;
 }
@@ -479,7 +479,7 @@ blockquote {
   background: #fff;
   border: solid 1px #E1E1E1;
 }
-blockquote p { margin: 0; padding 0; }
+blockquote p { margin: 0; padding: 0; }
 
 
 .comment-form-comment label { display: block; }

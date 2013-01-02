@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121212203902) do
+ActiveRecord::Schema.define(:version => 20130102225451) do
 
   create_table "clips", :force => true do |t|
     t.string   "director"
@@ -42,9 +42,10 @@ ActiveRecord::Schema.define(:version => 20121212203902) do
   create_table "reels", :id => false, :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "slug"
+    t.text     "description"
   end
 
   add_index "reels", ["user_id"], :name => "index_reels_on_user_id"

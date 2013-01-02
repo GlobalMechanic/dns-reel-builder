@@ -1,7 +1,9 @@
 <div class="tray reel">
   <div class="inside">
     <h3><%= @reel.title %></h3>
-    <div>@reel.description</div>
+    <% if @reel.description? %>
+    <div><%= @reel.description %></div>
+    <% end %>
   </div>
 </div>
 

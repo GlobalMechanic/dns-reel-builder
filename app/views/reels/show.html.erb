@@ -1,7 +1,9 @@
-<div class="tray reel"><div class="inside">
-  <h3><%= @reel.title %></h3>
-  description
-</div></div>
+<div class="tray reel">
+  <div class="inside">
+    <h3><%= @reel.title %></h3>
+    <div>@reel.description</div>
+  </div>
+</div>
 
 <div class="clips clearfix">
 <% @reel.clips.each_with_index do |clip, index| %>

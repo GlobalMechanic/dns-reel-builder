@@ -25,9 +25,7 @@
       </ul>
     </nav>
     <section>
-      <div class="tray reel"><div class="inside">
-        <%= yield %>
-      </div></div>
+      <%= yield %>
     </section>
   <footer>
     <nav class="sitemap">
@@ -45,11 +43,26 @@
       <div class="category clearfix">
         <h2><a href="/people">People</a></h2>
         <ul>
-<?php $directors = GetDirectors();
-  foreach ($directors as $director):
-?>
-          <li><a href="/people/<?php print str_replace(' ', '_', $director['name']); ?>"><?php print ucwords($director['name_short']); ?></a></li>
-<?php endforeach; ?>
+          <li><a href="/people/bruce_alcock">Bruce</a></li>
+          <li><a href="/people/tina_ouellette">Tina</a></li>
+          <li><a href="/people/ashley_hargreaves">Ashley</a></li>
+          <li><a href="/people/chez_battista">Chez</a></li>
+          <li><a href="/people/cliff_saito">Cliff</a></li>
+          <li><a href="/people/daniel_sousa">Daniel</a></li>
+          <li><a href="/people/dirk_van_de_vondel">Dirk</a></li>
+          <li><a href="/people/handcranked">Handcranked</a></li>
+          <li><a href="/people/ian_vincent_godfrey">Ian</a></li>
+          <li><a href="/people/jerald_schoenroth">Jerald</a></li>
+          <li><a href="/people/kangaroo_alliance">Kangaroo</a></li>
+          <li><a href="/people/ken_meyer">Ken</a></li>
+          <li><a href="/people/marv_newland">Marv</a></li>
+          <li><a href="/people/Michael_Mann">Michael</a></li>
+          <li><a href="/people/morten_vinther">Morten</a></li>
+          <li><a href="/people/nathaniel_akin">Nathaniel</a></li>
+          <li><a href="/people/rich_ferguson-hull">Rich</a></li>
+          <li><a href="/people/yes_please">Yes Please</a></li>
+          <li><a href="/people/elizabeth_murray">Liz</a></li>
+          <li><a href="/people/Allison_Jaren">Allison</a></li>
         </ul>
       </div>
       <div class="category clearfix">

@@ -30,13 +30,6 @@ class ReelsController < ApplicationController
       @reel_clip.order = index
       @reel_clip.save
     end
-    # sorted = []
-    # params[:order].each do |id|
-    #   sorted.push(@reel.clips.find { |clip| clip[:id] == id.to_i })
-    # end
-    
-    # @reel.clips = sorted
-    # puts @reel.clips.inspect
 
     respond_to do |format|
       format.json { render json: true }

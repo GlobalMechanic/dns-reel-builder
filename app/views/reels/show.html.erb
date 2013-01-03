@@ -1,9 +1,7 @@
 <div class="tray reel">
   <div class="inside">
     <h3><%= @reel.title %></h3>
-    <% if @reel.description? %>
-    <div><%= @reel.description %></div>
-    <% end %>
+    <%= content_tag(:p, @reel.description) if @reel.description? %>
   </div>
 </div>
 

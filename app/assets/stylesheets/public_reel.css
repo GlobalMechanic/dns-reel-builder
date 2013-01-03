@@ -151,7 +151,6 @@ nav.main .mechanica.active a { background: url(public_reel/images/mechanica-tile
 #mission .long { font-size: 35px; }
 
 section, .section {
-  padding-top: 40px;
   background: url(public_reel/images/white-tiles.jpg) top center;
 }
 
@@ -296,7 +295,7 @@ li.external a:hover { background-position: right -46px; }
 /* Job title */
 .tray h3, .tray .job-title {
   font-family: "Alternate Gothic No1 D";
-  margin: 0px 0 20px 0;
+  margin: 0;
   color: #808080;
   font-size: 48px;
   text-transform: uppercase;
@@ -308,6 +307,9 @@ li.external a:hover { background-position: right -46px; }
   margin: 1em 0 0.5em;
   text-transform: uppercase;
   font-weight: normal;
+}
+.tray p {
+  margin-bottom: 10px;
 }
 
 /* Bios */

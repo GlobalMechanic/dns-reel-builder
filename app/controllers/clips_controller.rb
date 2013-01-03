@@ -14,7 +14,7 @@ class ClipsController < ApplicationController
       end
     end
 
-    if ['director', 'client'].include? params[:where]
+    if ['director', 'client', 'category'].include? params[:where]
       @clips = @search.order('LOWER(' + params[:where] + ') ASC, title ASC')
     elsif ['technique', 'keyword'].include? params[:where]
       @clips = @search.order('title').uniq  

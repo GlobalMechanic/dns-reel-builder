@@ -17,7 +17,10 @@ class Clip < ActiveRecord::Base
                   :agency,
                   :client,
                   :year, 
-                  :month
+                  :month,
+                  :active,
+                  :category,
+                  :legacy_id
 
   validates :director,  :presence => true
   validates :title, :presence => true,

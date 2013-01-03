@@ -1,4 +1,5 @@
 class VersionsController < ApplicationController
+  before_filter :authenticate_user!
 
   # GET %/version/1
   # GET %/version/1.json

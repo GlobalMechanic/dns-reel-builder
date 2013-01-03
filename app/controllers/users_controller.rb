@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
 
   # GET /admin/users
   # GET /admin/users.json

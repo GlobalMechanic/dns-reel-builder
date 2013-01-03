@@ -1,5 +1,6 @@
 class ClipsController < ApplicationController
-  
+  before_filter :authenticate_user!
+
   # GET /clips
   # GET /clips.json
   def index

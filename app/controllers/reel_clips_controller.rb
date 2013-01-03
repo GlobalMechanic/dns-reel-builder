@@ -1,5 +1,6 @@
 class ReelClipsController < ApplicationController
-
+  before_filter :authenticate_user!
+  
   # GET /reels/1/2
   # GET /reels/1/2.json
   def add

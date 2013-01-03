@@ -1,4 +1,5 @@
 class ReelsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
 
   # GET /reels
   # GET /reels.json

@@ -49,7 +49,8 @@ $(document).ready(function() {
     $('body.public-reel .video.tray').remove();
     if (!active) {
       $(this).addClass('active');
-      $(this).parent('.clips').after(tray(gm.clips[parseInt($(this).attr('id').replace('clip-', ''))]));
+      var clipID = parseInt($(this).attr('id').replace('clip-', ''));
+      $(this).parent('.clips').after(tray(gm.clips[clipID]));
     }
     return false;
   });

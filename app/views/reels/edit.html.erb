@@ -8,7 +8,6 @@
 var clip = new ZeroClipboard.Client();
 clip.setText('<%= reel_url %>');
 clip.glue('copy-link');
-clip.setCSSEffects(true);
 clip.addEventListener('complete', function(client, text) {
   $('#copy-link').text('copied').css({ color: 'green' })
 });

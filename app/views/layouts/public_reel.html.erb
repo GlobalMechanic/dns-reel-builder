@@ -6,8 +6,19 @@
   <%= stylesheet_link_tag    "public_reel", :media => "all" %>
   <%= javascript_include_tag "public_reel" %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    var gm = gm || {
+      controller: '<%= params[:controller] %>',
+      action: '<%= params[:action] %>'
+    };
+    <%
+    clip_hash = Hash.new
+    @reel.clips.each {|clip| clip_hash[clip.id] = clip }
+    %>
+    gm.clips = <%=h raw(clip_hash.to_json) %>;
+  </script>
 </head>
-<body>
+<body class="public-reel">
   <body>
     <header>
       <h1 class="logo"><a href="http://globalmechanic.com/"><%= @reel.title %></a></h1>

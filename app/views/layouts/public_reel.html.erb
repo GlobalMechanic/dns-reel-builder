@@ -7,15 +7,17 @@
   <%= javascript_include_tag "public_reel" %>
   <%= csrf_meta_tags %>
   <script type="text/javascript">
-    var gm = gm || {
-      controller: '<%= params[:controller] %>',
-      action: '<%= params[:action] %>'
-    };
     <%
     clip_hash = Hash.new
     @reel.clips.each {|clip| clip_hash[clip.id] = clip }
     %>
-    gm.clips = <%=h raw(clip_hash.to_json) %>;
+    var gm = gm || {
+      root_url: '<%= root_url %>',
+      controller: '<%= params[:controller] %>',
+      action: '<%= params[:action] %>',
+      reel: <%=h raw(@reel.to_json) %>,
+      clips: <%=h raw(clip_hash.to_json) %>
+    };
   </script>
 </head>
 <body class="public-reel">

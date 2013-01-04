@@ -4,7 +4,7 @@ class ReelsController < ApplicationController
   # GET /reels
   # GET /reels.json
   def index
-    @reels = Reel.where("title <> ''")
+    @reels = Reel.where("title <> ''").order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb
@@ -124,6 +124,10 @@ class ReelsController < ApplicationController
   def destroy
     @reel = Reel.find(params[:id])
     @reel.destroy
+
+    @blank_reel = current_user.reels.new(params[:reel])
+    @blank_reel.save
+    set_current_reel_slug @blank_reel.id
 
     respond_to do |format|
       format.html { redirect_to reels_url }

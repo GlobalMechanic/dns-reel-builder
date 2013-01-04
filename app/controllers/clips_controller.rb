@@ -7,7 +7,7 @@ class ClipsController < ApplicationController
     @search = Clip.search(params[:search])
 
     if !params[:search]
-      @title = 'Browse All'
+      @title = 'Browse All (' + Clip.count.to_s + ' clips)'
     elsif params[:where]
       search_terms = params[:search].values.reject!(&:blank?)
       if !search_terms.empty?

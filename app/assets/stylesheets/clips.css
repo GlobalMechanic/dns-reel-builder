@@ -72,7 +72,7 @@ body.reels.edit .clip img {
 .clip .reel.loading { background-color: #ddd; }
 .clip .reel.add { background-position: top left; }
 .clip .reel.add:hover { background-position: top right; }
-.clip .reel.remove { background-position: bottom left; }
+.clip .reel.remove { background-position: bottom left; background-color: #999; }
 .clip .reel.remove:hover { background-position: bottom right; }
 
 .clip .extended {

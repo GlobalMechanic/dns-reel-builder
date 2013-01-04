@@ -1,8 +1,12 @@
 <h2><%= @reel.title %></h2>
 <%= link_to "view", reel_path %> <a href="#" id="copy-link">copy link</a>
-<%= render 'form' %>
 
 <%= render 'shared/clips' %>
+
+
+<div style="clear:both; padding-top: 25px;">
+<%= render 'form' %>
+</div>
 
 <script type="text/javascript">
 var clip = new ZeroClipboard.Client();

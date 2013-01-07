@@ -7,7 +7,7 @@ class ClipsController < ApplicationController
     @search = Clip.search(params[:search])
 
     if !params[:search]
-      @title = 'Browse All (' + Clip.count.to_s + ' clips)'
+      @title = 'All Clips (' + Clip.count.to_s + ')'
     elsif params[:where]
       search_terms = params[:search].values.reject!(&:blank?)
       if !search_terms.empty?
@@ -20,7 +20,7 @@ class ClipsController < ApplicationController
     elsif ['technique', 'keyword'].include? params[:where]
       @clips = @search.order('title').uniq  
     else
-      @clips = @search.order('title')
+      @clips = @search.order('title').uniq
     end
 
     if @current_reel

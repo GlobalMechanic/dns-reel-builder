@@ -50,6 +50,7 @@ $(document).ready(function() {
 
   // Dynamic search form.
   var nameToId = {
+    'all': '#search_title_or_client_or_description_or_category_or_keywords_taggings_tag_name_contains',
     'title': '#search_title_contains',
     'director': '#search_director_equals',
     'category': '#search_category_equals',

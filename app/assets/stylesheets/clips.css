@@ -48,6 +48,8 @@ body.reels.edit .clip img {
 .clip a:hover { color: #666; }
 
 .clip .title {
+  font-size: 18px;
+  letter-spacing: -1px;
   width: 143px;
   padding: 11px 0 8px 5px;
   overflow: hidden;

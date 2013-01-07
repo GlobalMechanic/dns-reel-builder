@@ -17,7 +17,37 @@
  *= require scaffolds
  */
 
+@font-face {
+  font-family: TransitWebPro;
+  src: url("transit/TransitWebPro.eot");
+}
+
+/* then for WOFF-capable browsers */
+@font-face {
+  font-family: TransitWebPro;
+  src: url("transit/TransitWebPro.woff") format("woff");
+}
+
+@font-face {
+  font-family: Clarendon;
+  src: url("clarendon/c070002tWeb.eot");
+}
+
+@font-face {
+  font-family: Clarendon;
+  src: url("clarendon/c070002tWeb.woff") format("woff");
+}
+
 body { margin-top: 150px; }
+
+body, p, ol, ul, td {
+  font-family: TransitWebPro;
+  font-size: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Clarendon;
+}
 
 header {
   top: 0;
@@ -30,8 +60,9 @@ header {
 
 nav ul { margin-bottom: 0px; }
 nav li { display: inline-block; }
+nav .disc li { display: list-item; }
 
-#primary, #secondary, #open-reel { font-size: 20px; margin-top: 10px; }
+#primary, #secondary, #open-reel { font-size: 23px; margin-top: 10px; }
 #primary li { margin-right: 10px; }
 
 .notice {
@@ -65,12 +96,12 @@ nav li { display: inline-block; }
   margin: 0;
   padding: 10px;
   background: #fafafa;
-  box-shadow: 1px 1px 2px #555;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
 .drawer.open .reels { display: block; }
 .drawer.open #open-reel {
   background: #fafafa;
-  box-shadow: 1px 1px 2px #555;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
 .drawer.open #open-reel:hover, #secondary li.open #create-reel:hover { background: black; }
 
@@ -86,10 +117,12 @@ nav li { display: inline-block; }
 }
 #create-reel {
   padding: 5px 10px;
+  position: relative;
+  left: -10px;
 }
 #secondary li.open #create-reel {
   background: #fafafa;
-  box-shadow: 1px 1px 2px #555;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
 #secondary li.open form {
   width: 300px;
@@ -97,12 +130,12 @@ nav li { display: inline-block; }
   position: absolute;
   z-index: 1;
   top: 25px;
-  left: 0;
+  left: -10px;
   z-index: 1;
   margin: 0;
   padding: 10px;
   background: #fafafa;
-  box-shadow: 1px 1px 2px #555;
+  box-shadow: 2px 2px 2px rgba(0,0,0, 0.35);
 }
 #secondary li.open input[type='text'] {
   display: inline-block;

@@ -21,10 +21,22 @@
     <%= f.text_field :email %>
   </div>
 
+  <div class="field">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, "Confirm password" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+
   <% @user.reels.each do |reel| %>
+    <% if (reel.title?) %>
     <div>
       <%= reel.title %> <%= link_to 'Show', reel %>
     </div>
+    <% end %>
   <% end %>
   <div class="actions">
     <%= f.submit %>

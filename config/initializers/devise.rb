@@ -1,3 +1,8 @@
+# Remove last active reel on sign in.
+Warden::Manager.after_authentication do |user,auth,opts|
+  user.update_attribute(:current_reel_slug, nil)
+end
+
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|

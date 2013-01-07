@@ -17,7 +17,7 @@
  *= require scaffolds
  */
 
-body { margin-top: 160px; }
+body { margin-top: 130px; }
 
 header {
   top: 0;
@@ -30,6 +30,9 @@ header {
 
 nav ul { margin-bottom: 0px; }
 nav li { display: inline-block; }
+
+#primary, #secondary, #open-reel { font-size: 20px; margin-top: 10px; }
+#primary li { margin-right: 10px; }
 
 .notice {
   margin-bottom: 12px;
@@ -93,7 +96,7 @@ nav li { display: inline-block; }
   display: block;
   position: absolute;
   z-index: 1;
-  top: 20px;
+  top: 25px;
   left: 0;
   z-index: 1;
   margin: 0;
@@ -103,6 +106,11 @@ nav li { display: inline-block; }
 }
 #secondary li.open input[type='text'] {
   display: inline-block;
+}
+
+input[type="text"], input[type="password"], input[type="email"], textarea, select,
+a.button, button, input[type="submit"], input[type="reset"], input[type="button"] {
+  margin-bottom: 5px;
 }
 
 footer { clear: both; }

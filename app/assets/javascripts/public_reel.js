@@ -21,7 +21,7 @@ $(document).ready(function() {
           '<div class="actions">',
             '<ul>',
               '<li><a href="mailto:tina@globalmechanic.com?subject=Montage%203D"><div class="icon email"></div><div>Contact Us</div></a></li>',
-              '<li><a id="share-button" href="#"><div class="icon"></div><div>Share clip</div></a></li>',
+              //'<li><a id="share-button" href="#"><div class="icon"></div><div>Share clip</div></a></li>',
             '</ul>',
           '</div>',
           '<div id="share" class="clearfix">',

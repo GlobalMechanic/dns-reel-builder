@@ -58,8 +58,6 @@ $(document).ready(function() {
     'technique': '#search_techniques_taggings_tag_name_contains',
     'keyword': '#search_keywords_taggings_tag_name_contains'
   };
-  // Current active facet should be shown.
-  $(nameToId[$('#clip_search #where').val()]).addClass('show');
 
   // Make 'All' field active if no search criteria.
   if ($(nameToId['all']).hasClass('show') && $(nameToId['all']).val() == '') {
@@ -69,7 +67,7 @@ $(document).ready(function() {
   // Show and hide search facets.
   $('#clip_search #where').change(function(e) {
     $('#clip_search .facet').removeClass('show');
-    $(nameToId[$(this).val()]).addClass('show');
+    $(nameToId[$(this).val()]).addClass('show').focus();
   });
 
   $('#clip_search select.facet').change(function(e) {

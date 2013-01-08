@@ -74,9 +74,9 @@ $(document).ready(function() {
     $('#clip_search').submit();
   });
 
-  // Remove inactive search facets before submitting form.
+  // Remove inactive search facets before submitting.
   $('#clip_search').submit(function() {
-    $('#clip_search .facet').not(nameToId[$('#clip_search #where').val()]).val('');
+    $('#clip_search .facet').not(nameToId[$('#clip_search #where').val()]).remove();
   });
 
   // Dragging and dropping for reels.

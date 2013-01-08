@@ -9,7 +9,7 @@ class ClipsController < ApplicationController
     if !params[:search]
       @title = 'All Clips (' + Clip.count.to_s + ')'
     elsif params[:where]
-      search_terms = params[:search].values.reject!(&:blank?)
+      search_terms = params[:search].values.reject(&:blank?)
       if !search_terms.empty?
         @title = params[:where].titleize + ': "' + search_terms.join(', ') + '"'
       end

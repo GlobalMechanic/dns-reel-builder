@@ -11,18 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+  <%= f.text_field :title %>
+  <%= f.text_field :description %>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, :rows => 4 %>
-  </div>
-  
-  <div class="actions">
-    <%= f.submit %>
-    <%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %>
-  </div>
+  <%= f.submit %>
+  <%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

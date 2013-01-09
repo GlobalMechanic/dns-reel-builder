@@ -1,0 +1,4 @@
+form.edit_reel input[type='text'],
+form.edit_reel input[type='submit'] {
+  display: inline-block;
+}

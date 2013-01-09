@@ -31,7 +31,7 @@
       <ul id="secondary">
         <!-- <li><%= link_to 'Browse', clips_url %></li> -->
         <li>
-        <% if @current_reel.title? %>
+        <% if @current_reel && @current_reel.title? %>
           Now viewing: <%= link_to @current_reel.title, edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) %>
         <% else %>
           <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel', :class => (@current_reel.clips.length > 0 ? 'show' : '') %>

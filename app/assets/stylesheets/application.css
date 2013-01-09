@@ -18,7 +18,7 @@
  */
 
 @font-face {
-  font-family: TransitWebPro;
+  font-family: Transit;
   src: url("transit/TransitWebPro.eot?") format('eot'), url("transit/TransitWebPro.woff") format("woff");
 }
 
@@ -35,7 +35,7 @@
 body { margin-top: 150px; }
 
 body, p, ol, ul, td {
-  font-family: TransitWebPro;
+  font-family: Transit;
   font-size: 20px;
 }
 

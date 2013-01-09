@@ -1,5 +1,17 @@
 <h2><%= @reel.title %></h2>
-<%= link_to "view", reel_path %> <a href="#" id="copy-link">copy link</a>
+<p><%= @reel.description %></p>
+
+<% if @reel.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@reel.errors.count, "error") %> prohibited this reel from being saved:</h2>
+
+    <ul>
+    <% @reel.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
 
 <% unless @reel.clips.length > 0 %>
 <%= content_tag(:p, 'No clips yet.') %>
@@ -7,10 +19,16 @@
 <%= render 'shared/clips' %>
 <% end %>
 
+<%= form_for @reel do |f| %>
+  <%= f.text_field :title, :placeholder => 'Title' %>
+  <%= f.text_field :description, :placeholder => 'Description' %>
 
-<div style="clear:both; padding-top: 25px;">
-<%= render 'form' %>
-</div>
+  <%= f.submit %>
+<% end %>
+<%= link_to "view", reel_path %> <a href="#" id="copy-link">copy link</a>
+
+
+<%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <script type="text/javascript">
 var clip = new ZeroClipboard.Client();

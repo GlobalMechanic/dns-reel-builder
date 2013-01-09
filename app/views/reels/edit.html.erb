@@ -1,40 +1,46 @@
-<h2><%= @reel.title %></h2>
-<p><%= @reel.description %></p>
+<div class="meta">
+  <%= form_for @reel do |f| %>
+    <%= f.text_field :title, :placeholder => 'Title' %>
+    <%= f.text_area :description, :rows => 4, :placeholder => 'Description' %>
 
-<% if @reel.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@reel.errors.count, "error") %> prohibited this reel from being saved:</h2>
+    <%= f.submit 'Update' %>
+  <% end %>
+  <ul>
+    <li><%= link_to 'View', reel_path %></li>
+    <li><%= link_to 'Copy Link', '#', :id => 'copy-link' %></li>
+    <li><%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+  </ul>
+</div>
 
-    <ul>
-    <% @reel.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="reel-presentation">
 
-<% unless @reel.clips.length > 0 %>
-<%= content_tag(:p, 'No clips yet.') %>
-<% else %>
-<%= render 'shared/clips' %>
-<% end %>
+  <h2><%= @reel.title %></h2>
+  <p><%= @reel.description %></p>
 
-<%= form_for @reel do |f| %>
-  <%= f.text_field :title, :placeholder => 'Title' %>
-  <%= f.text_field :description, :placeholder => 'Description' %>
+  <% if @reel.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@reel.errors.count, "error") %> prohibited this reel from being saved:</h2>
 
-  <%= f.submit %>
-<% end %>
-<%= link_to "view", reel_path %> <a href="#" id="copy-link">copy link</a>
+      <ul>
+      <% @reel.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-
-<%= link_to 'Destroy', @reel, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% unless @reel.clips.length > 0 %>
+  <%= content_tag(:p, 'No clips yet.') %>
+  <% else %>
+  <%= render 'shared/clips' %>
+  <% end %>
+</div>
 
 <script type="text/javascript">
 var clip = new ZeroClipboard.Client();
 clip.setText('<%= reel_url %>');
 clip.glue('copy-link');
 clip.addEventListener('complete', function(client, text) {
-  $('#copy-link').text('copied').css({ color: 'green' })
+  $('#copy-link').text('Copied Link').css({ color: 'green' })
 });
 </script>

@@ -2,3 +2,25 @@ form.edit_reel input[type='text'],
 form.edit_reel input[type='submit'] {
   display: inline-block;
 }
+
+body.reels.edit .reel-presentation {
+  width: 768px;
+  float: left;
+}
+body.reels.edit .clips .clip:nth-child(4n+4).open .reel {
+  right: 0;
+}
+body.reels.edit .meta {
+  margin-top: 20px;
+  width: 180px;
+  float: right;
+}
+
+
+form.edit_reel input[type="text"],
+form.edit_reel input[type="password"],
+form.edit_reel input[type="email"],
+form.edit_reel textarea,
+form.edit_reel select {
+  width: 170px;
+}

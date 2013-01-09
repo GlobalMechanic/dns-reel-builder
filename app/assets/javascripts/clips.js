@@ -9,6 +9,12 @@ $(document).ready(function() {
         url: $clip.attr('href') + '.json',
         type: 'DELETE',
         success: function(data) {
+          if (data > 0) {
+            $('#create-reel').addClass('show');
+          }
+          else {
+           $('#create-reel').removeClass('show'); 
+          }
           $clip.removeClass('loading');
         }
       });
@@ -18,6 +24,12 @@ $(document).ready(function() {
         url: $clip.attr('href') + '.json',
         type: 'POST',
         success: function(data) {
+          if (data > 0) {
+            $('#create-reel').addClass('show');
+          }
+          else {
+           $('#create-reel').removeClass('show'); 
+          }
           $clip.removeClass('loading');
         }
       });

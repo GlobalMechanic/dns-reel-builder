@@ -17,7 +17,8 @@ class ReelClipsController < ApplicationController
     respond_to do |format|
       if @reel_clip.save
         format.html { redirect_to reel_path(@reel, :anchor => 'clip-' + @clip.id.to_s), notice: 'Reel was successfully updated.' }
-        format.json { head :no_content }
+        #format.json { head :no_content }
+        format.json { render json: @reel.clips.length, status: :created, location: @reel }
       else
         format.html { render action: "edit" }
         format.json { render json: @reel.errors, status: :unprocessable_entity }
@@ -34,7 +35,7 @@ class ReelClipsController < ApplicationController
     respond_to do |format|
       if @reel.clips.delete(@clip)
         format.html { redirect_to reel_path(@reel, :anchor => 'clip-' + @clip.id.to_s), notice: 'Reel was successfully updated.' }
-        format.json { head :no_content }
+        format.json { render json: @reel.clips.length, status: :created, location: @reel }
       else
         format.html { render action: "edit" }
         format.json { render json: @reel.errors, status: :unprocessable_entity }

@@ -19,23 +19,17 @@
 
 @font-face {
   font-family: TransitWebPro;
-  src: url("transit/TransitWebPro.eot");
-}
-
-/* then for WOFF-capable browsers */
-@font-face {
-  font-family: TransitWebPro;
-  src: url("transit/TransitWebPro.woff") format("woff");
+  src: url("transit/TransitWebPro.eot?") format('eot'), url("transit/TransitWebPro.woff") format("woff");
 }
 
 @font-face {
   font-family: Clarendon;
-  src: url("clarendon/c070002tWeb.eot");
+  src: url("clarendon/c070002tWeb.eot?") format('eot'), url("clarendon/c070002tWeb.woff") format("woff");
 }
-
 @font-face {
   font-family: Clarendon;
-  src: url("clarendon/c070002tWeb.woff") format("woff");
+  font-weight: bold;
+  src: url("clarendon/c070004tWeb.eot?") format('eot'), url("clarendon/c070004tWeb.woff") format("woff");
 }
 
 body { margin-top: 150px; }
@@ -47,6 +41,7 @@ body, p, ol, ul, td {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: Clarendon;
+  font-weight: bold;
 }
 
 header {

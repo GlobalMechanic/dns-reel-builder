@@ -74,6 +74,7 @@ class ReelsController < ApplicationController
 
   # GET /reels/1/edit
   def edit
+    @search = Clip.search(params[:search])
     @reel = Reel.find(params[:id])
     @clips = @reel.clips.order('"order"')
     set_current_reel_slug @reel.id

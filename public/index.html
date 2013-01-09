@@ -5,11 +5,15 @@
     <script language="javascript">
         window.setTimeout(function() {
           window.location.href = "clips";
-        }, 0);
+        }, 50);
     </script>
     <style>
     #floatingCirclesG {
-      position:relative;
+      left: 50%;
+      top: 50%;
+      margin-top: -32px;
+      margin-left: -32px;
+      position:absolute;
       width:64px;
       height:64px;
       -moz-transform:scale(0.6);
@@ -154,7 +158,6 @@
     <title>Page Redirection</title>
 </head>
 <body>
-  Loading...
   <div id="floatingCirclesG">
     <div class="f_circleG" id="frotateG_01"></div>
     <div class="f_circleG" id="frotateG_02"></div>

@@ -4,11 +4,12 @@ $(document).ready(function() {
     $(this).parent().toggleClass('open');
     return false;
   });
+
   $('#create-reel').click(function () {
     $('#reel_title').focus();
   });
 
-  // Dragging and dropping for reels.
+  // Drag and drop for reels.
   if (gm.controller === 'reels' && gm.action === 'edit') {
     // Clip drag events.
     var $dragged = null;

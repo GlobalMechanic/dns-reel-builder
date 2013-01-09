@@ -6,8 +6,8 @@
 </div>
 
 <div class="clips clearfix">
-<%= content_tag(:p, 'No clips yet.') unless @reel.clips.length > 0 %>
-<% @reel.clips.each_with_index do |clip, index| %>
+<%= content_tag(:p, 'No clips yet.') unless @clips.length > 0 %>
+<% @clips.each_with_index do |clip, index| %>
   <% if index % 4 === 0 && index != 0 %>
   </div>
   <div class="clips clearfix">

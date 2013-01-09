@@ -9,7 +9,7 @@
   <script type="text/javascript">
     <%
     clip_hash = Hash.new
-    @reel.clips.each {|clip| clip_hash[clip.id] = clip }
+    @clips.each {|clip| clip_hash[clip.id] = clip }
     %>
     var gm = gm || {
       root_url: '<%= root_url %>',

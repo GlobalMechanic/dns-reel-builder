@@ -44,6 +44,8 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
+time { border-bottom: 1px dotted #999; }
+
 header {
   top: 0;
   position: fixed;

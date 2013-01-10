@@ -115,6 +115,7 @@ body.reels.edit .clip img {
   width: 0px;
   border-right: 4px dashed transparent; 
   margin-right: 0px;
+  margin-top: 10px;
   height: 146px;
   position: relative;
 }
@@ -130,7 +131,7 @@ body.reels.edit .clip img {
   z-index: 100;
   position: absolute;
 }
-.slot.last .region {
+.slot:last-child .region {
   width: 238px;
   left: -48px;
 }

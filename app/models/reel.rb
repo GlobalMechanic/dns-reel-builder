@@ -1,5 +1,4 @@
 class Reel < ActiveRecord::Base
-  #resourcify
   belongs_to :user
   attr_accessible :title, :description
 

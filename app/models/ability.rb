@@ -6,13 +6,20 @@ class Ability
     #
     user ||= User.new # guest user (not logged in)
 
+    if user.has_role? :admin
+      can :manage, :all
+    else
+      can :view, Reel
+      can(:manage, Reel) { |reel| user.reels.include?(reel)  }
+    end
+
     #puts 'WHEN DOES THIS GET CALLED? ' + user.id.to_s
-    can(:manage, :all) if user.has_role? :admin
+    #can(:manage, :all) if user.has_role? :admin
     #can(:manage, Reel) { |reel| false }
     #can :destroy, Reel, :id => Reel.user_id = user.id
     #can(:manage, Reel) { |reel| true }
     #can :manage, Reel, :user_id => false
-    can(:manage, Reel) {|reel| false }
+    #can(:manage, Reel) {|reel| false }
 
 
       # if user.admin?

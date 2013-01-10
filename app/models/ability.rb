@@ -9,8 +9,8 @@ class Ability
     if user.has_role? :admin
       can :manage, :all
     else
-      can :view, Reel
-      can(:manage, Reel) { |reel| user.reels.include?(reel)  }
+      #can(:manage, Reel) { |reel| user.reels.include?(reel)  }
+      can :manage, Reel, :user_id => user.id
     end
 
     #puts 'WHEN DOES THIS GET CALLED? ' + user.id.to_s

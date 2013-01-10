@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_filter :nav_variables
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to request.referer, :alert => exception.message
+    redirect_to request.referer || root_path, :alert => exception.message
   end
 
   private

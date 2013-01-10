@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -11,6 +11,7 @@ gem 'json'
 gem 'paperclip'
 gem 'paper_trail'
 gem 'devise'
+gem "rolify"
 gem 'acts-as-taggable-on', '~> 2.3.3'
 gem 'meta_search'
 gem 'zeroclipboard-rails'

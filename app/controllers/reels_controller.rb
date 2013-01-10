@@ -5,7 +5,7 @@ class ReelsController < ApplicationController
   # GET /reels
   # GET /reels.json
   def index
-    @reels = Reel.where("title <> ''").order('created_at DESC')
+    @reels = Reel.where("title <> ''").where("user_id = ?", current_user.id).order('created_at DESC')
 
     respond_to do |format|
       format.html # index.html.erb

@@ -12,6 +12,7 @@ gem 'paperclip'
 gem 'paper_trail'
 gem 'devise'
 gem "rolify"
+gem "cancan"
 gem 'acts-as-taggable-on', '~> 2.3.3'
 gem 'meta_search'
 gem 'zeroclipboard-rails'

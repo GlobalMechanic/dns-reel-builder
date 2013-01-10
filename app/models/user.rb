@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :login, :name, :email, :password, :password_confirmation, :remember_me, :current_reel_slug
 
+  attr_accessible :role_ids, :as => :admin
+
   # Virtual attribute for authenticating by either name or email
 	attr_accessor :login
 

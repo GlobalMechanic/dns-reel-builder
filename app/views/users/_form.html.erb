@@ -31,6 +31,12 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
+  <div class="field">
+    <%= Roles.all.inspect %>
+    <%= f.check_box :role_ids, :value => :role_ids %> <%= f.label 'Admin?' %>
+    <% #f.input :role_ids, :collection => Role.all, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
+  </div>
+
   <% @user.reels.each do |reel| %>
     <% if (reel.title?) %>
     <div>

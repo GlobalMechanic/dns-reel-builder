@@ -23,7 +23,7 @@
       <ul id="primary">
         <li><%= link_to 'Clips', clips_path %></li>
         <li><%= link_to 'Reels', reels_path %></li>
-        <% if current_user.has_role? :admin %>
+        <% if can? :manage, User %>
         <li><%= link_to 'Users', users_path %></li>
         <% end %>
         <!-- <li><%= link_to "Edit #{current_user.name}", edit_user_registration_path %></li> -->

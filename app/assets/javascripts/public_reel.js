@@ -50,6 +50,14 @@ $(document).ready(function() {
       $(this).addClass('active');
       var clipID = parseInt($(this).attr('id').replace('clip-', ''));
       $(this).parent('.clips').after(tray({ root_url: gm.root_url, clip: gm.clips[clipID], reel: gm.reel }));
+      if ($('.tray').length > 0) {
+        var currentTray = $('.tray .inside, .tray video').last();
+        var paddingTop = ($(window).height() - currentTray.height()) / 2;
+        if (paddingTop < 0) {
+          paddingTop = 0;
+        }
+        window.scrollTo(0, currentTray.parent().position().top - paddingTop);
+      }
     }
     return false;
   });

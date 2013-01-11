@@ -1,13 +1,14 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
+//= require videojs
 //= require zero-clipboard
 
 $(document).ready(function() {
   var tray = _.template(
     ['<div id="tray-<%= clip.id %>" class="video tray">',
       '<div class="inside">',
-        '<video class="video-js vjs-default-skin" controls="controls" autoplay="autoplay" data-setup="{}" width="960" height="540">',
+        '<video id="clip-<%= clip.id %>-video" class="video-js vjs-default-skin" controls="controls" autoplay="autoplay" width="960" height="540">',
           '<source src="http://globalmechanic.com/clip/movies/<%= clip.video %>" type="video/mp4">',
         '</video>',
         '<div class="meta">',
@@ -49,7 +50,12 @@ $(document).ready(function() {
     if (!active) {
       $(this).addClass('active');
       var clipID = parseInt($(this).attr('id').replace('clip-', ''));
-      $(this).parent('.clips').after(tray({ root_url: gm.root_url, clip: gm.clips[clipID], reel: gm.reel }));
+      var $newClip = $(tray({ root_url: gm.root_url, clip: gm.clips[clipID], reel: gm.reel }));
+      $(this).parent('.clips').after($newClip);
+      //window.setTimeout(function() {
+        //_V_('clip-' + clipID + '-video', {}, function() { console.log('hahaha'); });
+      //}, 2000);
+      //$(this).parent('.clips').after(tray({ root_url: gm.root_url, clip: gm.clips[clipID], reel: gm.reel }));
       if ($('.tray').length > 0) {
         var currentTray = $('.tray .inside, .tray video').last();
         var paddingTop = ($(window).height() - currentTray.height()) / 2;

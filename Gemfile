@@ -2,21 +2,27 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'pg'
 gem 'mysql2'
 gem 'json'
-gem 'paperclip'
-gem 'paper_trail'
+
+# Auth
 gem 'devise'
 gem "rolify"
 gem "cancan"
-gem 'acts-as-taggable-on', '~> 2.3.3'
+
+# Controllers
 gem 'meta_search'
+
+# Models
+gem 'paperclip'
+gem 'paper_trail'
+gem 'acts-as-taggable-on', '~> 2.3.3'
+
+# Frontend
 gem 'zeroclipboard-rails'
 gem 'underscore-rails'
+gem 'videojs_rails'
 
 # Gems used only for assets and not required
 # in production environments by default.

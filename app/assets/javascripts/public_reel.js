@@ -1,14 +1,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require underscore
-//= require videojs
 //= require zero-clipboard
 
 $(document).ready(function() {
   var tray = _.template(
     ['<div id="tray-<%= clip.id %>" class="video tray">',
       '<div class="inside">',
-        '<video id="clip-<%= clip.id %>-video" class="video-js vjs-default-skin" controls="controls" autoplay="autoplay" width="960" height="540">',
+        '<video class="video-js vjs-default-skin" controls="controls" autoplay="autoplay" width="960" height="540">',
           '<source src="http://globalmechanic.com/clip/movies/<%= clip.video %>" type="video/mp4">',
         '</video>',
         '<div class="meta">',
@@ -43,6 +42,9 @@ $(document).ready(function() {
     '</div>'].join('')
   );
 
+  if (navigator.userAgent.match(/msie/i)) {
+    _V_.options.techOrder = ["flash","html5"];
+  }
   $('body.public-reel .clips .clip').click(function() {
     var active = $(this).hasClass('active');
     $('body.public-reel .clips .clip.active').removeClass('active');
@@ -51,6 +53,7 @@ $(document).ready(function() {
       $(this).addClass('active');
       var clipID = parseInt($(this).attr('id').replace('clip-', ''));
       var $newClip = $(tray({ root_url: gm.root_url, clip: gm.clips[clipID], reel: gm.reel }));
+      _V_($newClip.find('video').get(0));
       $(this).parent('.clips').after($newClip);
       //window.setTimeout(function() {
         //_V_('clip-' + clipID + '-video', {}, function() { console.log('hahaha'); });

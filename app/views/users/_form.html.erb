@@ -31,12 +31,6 @@
     <%= f.password_field :password_confirmation %>
   </div>
 
-  <div class="field">
-    <%= @user.roles.inspect %>
-    <%= f.check_box :role_ids, :value => :role_ids %> <%= f.label 'Admin?' %>
-    <% #f.input :role_ids, :collection => Role.all, :as => :radio_buttons, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
-  </div>
-
   <% @user.reels.each do |reel| %>
     <% if (reel.title?) %>
     <div>
@@ -48,4 +42,11 @@
     <%= f.submit %>
     <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
+<% end %>
+
+<%= simple_form_for @user, :url => user_path(@user), :html => {:method => :put } do |f| %>
+<div class="field">
+  <%= f.input :role_ids, :collection => Role.all, :as => :check_boxes, :label_method => lambda {|t| t.name.titleize}, :label => false, :item_wrapper_class => 'inline' %>
+</div>
+<%= f.submit "Change Role" %>
 <% end %>

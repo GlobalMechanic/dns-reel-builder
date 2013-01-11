@@ -22,6 +22,7 @@ gem 'acts-as-taggable-on', '~> 2.3.3'
 # Frontend
 gem 'zeroclipboard-rails'
 gem 'underscore-rails'
+gem 'simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.

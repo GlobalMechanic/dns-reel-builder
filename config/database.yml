@@ -6,7 +6,7 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: asset-manager
+  database: reel-builder
   pool: 5
   username: tylor
   password:

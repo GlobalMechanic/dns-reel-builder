@@ -14,6 +14,12 @@ $(document).ready(function() {
     // Clip drag events.
     var $dragged = null;
     $('.clip').bind('dragstart', function(e) {
+      e.originalEvent.dataTransfer.effectAllowed = 'move';
+      // Firefox needs this.
+      if (typeof $.browser.mozilla !== 'undefined') {
+        e.originalEvent.dataTransfer.setData('clip', this.id);
+        e.originalEvent.dataTransfer.setDragImage($(this).find('img').get(0), 80, 60);
+      }
       $('.clips').addClass('dragging');
       $dragged = $(this).addClass('dragged');
       return true;
@@ -25,6 +31,7 @@ $(document).ready(function() {
 
     // Slot dragover events.
     $('.slot').bind('dragover', function(e) {
+      e.originalEvent.dataTransfer.dropEffect = 'move';
       $(this).addClass('active');
       // Drag into a neighbouring slot (no change).
       if ($dragged.next().get(0) === this || $dragged.prev().get(0) === this) {
@@ -37,6 +44,7 @@ $(document).ready(function() {
       $(this).removeClass('active');
       return false;
     }).bind('drop', function(e) {
+      //var el = document.getElementById(e.originalEvent.dataTransfer.getData('Text'));
       var $this = $(this);
       var $bringMeAlong = $dragged.prev();
 

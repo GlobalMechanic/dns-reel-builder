@@ -3,7 +3,7 @@ AssetManager::Application.routes.draw do
 
   # Restrict this.
   scope "/admin" do
-    resources :users #, :only => [:index, :edit]
+    resources :users
   end
 
   resources :clips

@@ -11,7 +11,10 @@
   <script type="text/javascript">
     <%
     clip_hash = Hash.new
-    @clips.each {|clip| clip_hash[clip.id] = clip }
+    @clips.each { |clip|
+      clip_hash[clip.id] = clip
+      clip_hash[clip.id].description = url_token(clip.description)
+    }
     %>
     var gm = gm || {
       root_url: '<%= root_url %>',

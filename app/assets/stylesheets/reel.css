@@ -24,3 +24,7 @@ form.edit_reel textarea,
 form.edit_reel select {
   width: 170px;
 }
+
+.reel h2 {
+  display: inline-block;
+}

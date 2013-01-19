@@ -1,9 +1,11 @@
 <% @reels.each do |reel| %>
-<div id="reel-<%= reel.slug %>" class="reel-id clips">
-  <h2><%= link_to reel.title, open_reel_path(reel) %></h2>
-  <% if can? :destroy, reel %>
-  <%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %>
-  <% end %>
+<div id="reel-<%= reel.slug %>" class="reel-id reel clips">
+  <div>
+    <h2><%= link_to reel.title, open_reel_path(reel) %></h2>
+    <% if can? :destroy, reel %>
+    <small><%= link_to 'Destroy', reel, method: :delete, data: { confirm: 'Are you sure?' } %></small>
+    <% end %>
+  </div>
   <%= content_tag(:p, 'No clips yet.') unless reel.clips.length > 0 %>
   <% reel.clips.each_with_index do |clip, index| %>
   <div class="clip" draggable="true">

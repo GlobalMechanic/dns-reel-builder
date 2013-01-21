@@ -15,9 +15,9 @@ $(document).ready(function() {
     var $dragged = null;
     $('.clip').bind('dragstart', function(e) {
       e.originalEvent.dataTransfer.effectAllowed = 'move';
+      e.originalEvent.dataTransfer.setData('text/clip', this);
       // Firefox needs this.
       if (typeof $.browser.mozilla !== 'undefined') {
-        e.originalEvent.dataTransfer.setData('clip', this.id);
         e.originalEvent.dataTransfer.setDragImage($(this).find('img').get(0), 80, 60);
       }
       $('.clips').addClass('dragging');

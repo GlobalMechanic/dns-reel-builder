@@ -5,6 +5,7 @@ AssetManager::Application.routes.draw do
   scope "/admin" do
     resources :users
   end
+  match "/admin" => redirect("http://globalmechanic.com/admin/")
 
   resources :clips
   resources :versions

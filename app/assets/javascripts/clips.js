@@ -10,10 +10,12 @@ $(document).ready(function() {
         type: 'DELETE',
         success: function(data) {
           if (data > 0) {
+            $('#empty-reel').removeClass('show');
             $('#create-reel').addClass('show');
           }
           else {
-           $('#create-reel').removeClass('show'); 
+            $('#empty-reel').addClass('show');
+            $('#create-reel').removeClass('show'); 
           }
           $clip.removeClass('loading');
         }
@@ -25,10 +27,12 @@ $(document).ready(function() {
         type: 'POST',
         success: function(data) {
           if (data > 0) {
+            $('#empty-reel').removeClass('show');
             $('#create-reel').addClass('show');
           }
           else {
-           $('#create-reel').removeClass('show'); 
+            $('#empty-reel').addClass('show');
+            $('#create-reel').removeClass('show'); 
           }
           $clip.removeClass('loading');
         }

@@ -11,6 +11,10 @@
 #clip_search .facet { display: none; }
 #clip_search .facet.show { display: inline-block; }
 
+#clip_search select {
+  padding: 6px 12px;
+}
+
 .meta img {
   float: left;
   margin-right: 10px;

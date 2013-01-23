@@ -19,66 +19,69 @@
   <div class="container">
     <% if user_signed_in? %>
     <header>
-      <nav class="clearfix">
-        <ul id="primary">
-          <li><%= link_to 'Clips', clips_path %></li>
-          <li><%= link_to 'Reels', reels_path %></li>
-          <% if can? :manage, User %>
-          <li><%= link_to 'Users', users_path %></li>
-          <% end %>
-          <!-- <li><%= link_to "Edit #{current_user.name}", edit_user_registration_path %></li> -->
-          <!-- <li><%= link_to 'Edit User', edit_user_path(current_user) %></li> -->
-          <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
-        </ul>
-        <ul id="secondary">
-          <!-- <li><%= link_to 'Browse', clips_url %></li> -->
-          <li>
-          <% if @current_reel && @current_reel.title? %>
-            Now viewing: <%= link_to @current_reel.title, edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) %>
-          <% else %>
-            <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel', :class => (@current_reel.clips.length > 0 ? 'show' : '') %>
-            <%= form_for @current_reel do |f| %>
-              <%= f.text_field :title %>
-              <%= f.submit 'Create' %>
+      <div class="inner">
+        <nav class="clearfix">
+          <ul id="secondary">
+            <!-- <li><%= link_to 'Browse', clips_url %></li> -->
+            <li>
+            <% if @current_reel && @current_reel.title? %>
+              <%= link_to @current_reel.title, edit_reel_path(@current_reel) %> <%= link_to '×', close_reel_path(@current_reel) %>
+            <% else %>
+              <%= link_to 'Create my Reel', edit_reel_path(@current_reel), :id => 'create-reel', :class => (@current_reel.clips.length > 0 ? 'show' : '') %>
+              <%= content_tag :span, 'Select a clip', :id => 'empty-reel', :class => (@current_reel.clips.length > 0 ? '' : 'show') %>
+              <%= form_for @current_reel do |f| %>
+                <%= f.text_field :title %>
+                <%= f.submit 'Create' %>
+              <% end %>
             <% end %>
+            </li>
+          </ul>
+          <ul id="primary">
+            <li><%= link_to 'Clips', clips_path %></li>
+            <li><%= link_to 'Reels', reels_path %></li>
+            <% if can? :manage, User %>
+            <li><%= link_to 'Users', users_path %></li>
+            <% end %>
+            <!-- <li><%= link_to "Edit #{current_user.name}", edit_user_registration_path %></li> -->
+            <!-- <li><%= link_to 'Edit User', edit_user_path(current_user) %></li> -->
+            <li><%= link_to 'Logout', destroy_user_session_path, :method => 'delete' %></li>
+            <li class="drawer">
+              <%= link_to 'Recent Reels', reels_path, :id => 'open-reel' %>
+              <div class="reels eight columns">
+                <div class="four columns alpha">
+                  <div class="title">Recently Created</div>
+                  <ul class="disc">
+                    <% @reels_created.each do |reel| %>
+                    <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.created_at) %></li>
+                    <% end %>
+                  </ul>
+                </div>
+                <div class="four columns omega">
+                  <div class="title">Recently Updated</div>
+                  <ul class="disc">
+                    <% @reels_updated.each do |reel| %>
+                    <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.updated_at) %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <% if @search && Clip.count > 0 %>
+          <%= form_for @search do |f| %>
+            <%= select_tag(:where, options_for_select([['All', 'all'], ['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tag', 'keyword'], ['Category', 'category']], params[:where])) %>
+            <%= f.text_field :title_or_client_or_director_or_description_or_category_or_keywords_taggings_tag_name_contains, :class => 'facet' + (params[:where].blank? || params[:where] == 'all' ?  ' show' :  '') %>
+            <%= f.text_field :title_contains, :class => 'facet' + (params[:where] == 'title' ?  ' show' :  '') %>
+            <%= f.collection_select(:director_equals, Clip.all.map {|clip| clip[:director].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Directors'}, { :class => 'facet' + (params[:where] == 'director' ?  ' show' :  '')  }) %>
+            <%= f.collection_select(:category_equals, Clip.all.map {|clip| clip[:category].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Categories'}, { :class => 'facet' + (params[:where] == 'category' ?  ' show' :  '') }) %>
+            <%= f.collection_select(:client_equals, Clip.all.map(&:client).uniq.reject!(&:blank?).map{|client| client.titleize }.sort, :downcase, :to_s, {:include_blank => 'All Clients'}, {:class => 'facet' + (params[:where] == 'client' ?  ' show' :  '') }) %>
+            <%= f.collection_select(:techniques_taggings_tag_name_contains, Clip.technique_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Techniques'}, {:class => 'facet' + (params[:where] == 'technique' ?  ' show' :  '') }) %>
+            <%= f.collection_select(:keywords_taggings_tag_name_contains, Clip.keyword_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Keywords'}, {:class => 'facet' + (params[:where] == 'keyword' ?  ' show' :  '') }) %>
+            <%= f.submit 'Search' %>
           <% end %>
-          </li>
-        </ul>
-        <div class="drawer">
-          <%= link_to 'Recent Reels', reels_path, :id => 'open-reel' %>
-          <div class="reels eight columns">
-            <div class="four columns alpha">
-              <div class="title">Recently Created</div>
-              <ul class="disc">
-                <% @reels_created.each do |reel| %>
-                <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.created_at) %></li>
-                <% end %>
-              </ul>
-            </div>
-            <div class="four columns omega">
-              <div class="title">Recently Updated</div>
-              <ul class="disc">
-                <% @reels_updated.each do |reel| %>
-                <li><%= link_to reel.title, open_reel_path(reel) %> <%= time_ago_in_words(reel.updated_at) %></li>
-                <% end %>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </nav>
-      <% if @search && Clip.count > 0 %>
-        <%= form_for @search do |f| %>
-          <%= select_tag(:where, options_for_select([['All', 'all'], ['Title', 'title'], ['Director', 'director'], ['Client', 'client'], ['Technique', 'technique'], ['Tag', 'keyword'], ['Category', 'category']], params[:where])) %>
-          <%= f.text_field :title_or_client_or_director_or_description_or_category_or_keywords_taggings_tag_name_contains, :class => 'facet' + (params[:where].blank? || params[:where] == 'all' ?  ' show' :  '') %>
-          <%= f.text_field :title_contains, :class => 'facet' + (params[:where] == 'title' ?  ' show' :  '') %>
-          <%= f.collection_select(:director_equals, Clip.all.map {|clip| clip[:director].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Directors'}, { :class => 'facet' + (params[:where] == 'director' ?  ' show' :  '')  }) %>
-          <%= f.collection_select(:category_equals, Clip.all.map {|clip| clip[:category].titleize }.uniq.sort, :downcase, :to_s, {:include_blank => 'All Categories'}, { :class => 'facet' + (params[:where] == 'category' ?  ' show' :  '') }) %>
-          <%= f.collection_select(:client_equals, Clip.all.map(&:client).uniq.reject!(&:blank?).map{|client| client.titleize }.sort, :downcase, :to_s, {:include_blank => 'All Clients'}, {:class => 'facet' + (params[:where] == 'client' ?  ' show' :  '') }) %>
-          <%= f.collection_select(:techniques_taggings_tag_name_contains, Clip.technique_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Techniques'}, {:class => 'facet' + (params[:where] == 'technique' ?  ' show' :  '') }) %>
-          <%= f.collection_select(:keywords_taggings_tag_name_contains, Clip.keyword_counts.map(&:name).map{|tag| tag.titleize }.uniq.sort, :to_s, :to_s, {:include_blank => 'All Keywords'}, {:class => 'facet' + (params[:where] == 'keyword' ?  ' show' :  '') }) %>
-          <%= f.submit 'Search' %>
         <% end %>
-      <% end %>
+      </div>
     </header>
     <% end %>
     <%= content_tag(:p, notice, :class => 'notice') if notice %>

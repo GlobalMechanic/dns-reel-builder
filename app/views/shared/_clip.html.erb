@@ -8,7 +8,7 @@
   <img class="default" draggable="false" src="http://globalmechanic.com/clip/thumbnails/<%= clip.image %>" alt="<%= clip.title %>" width="188" height="106">
   <div class="extended">
     <div class="title"><%= clip.title %></div>
-    <video src="http://globalmechanic.com/clip/movies/<%= clip.video %>" controls="controls" preload="none"></video>
+    <video id="video-clip-<%= clip.id %>" class="video-js vjs-default-skin" data-setup="{}" width="380" height="257" src="http://globalmechanic.com/clip/movies/<%= clip.video %>" preload="none"></video>
   </div>
 </div>
 

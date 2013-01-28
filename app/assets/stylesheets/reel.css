@@ -7,7 +7,11 @@ body.reels.edit .reel-presentation {
   width: 768px;
   float: left;
 }
-body.reels.edit .clips .clip:nth-child(4n+4).open .reel {
+body.reels.edit .clips .clip:nth-child(8n+8).open .reel {
+  right: 0;
+}
+body.reels.edit .clips .clip:nth-child(8n+8) .extended {
+  left: auto;
   right: 0;
 }
 body.reels.edit .meta {

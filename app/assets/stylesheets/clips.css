@@ -95,7 +95,8 @@ body.reels.edit .clip img {
   left: 0;
   z-index: 1;
 }
-.clips .clip:nth-child(5n+5) .extended {
+
+.clips .clip:nth-child(10n+11) .extended {
   left: auto;
   right: 0;
 }
@@ -109,7 +110,7 @@ body.reels.edit .clip img {
   z-index: 2;
   background-color: #ffe;
 }
-.clips .clip:nth-child(5n+5).open .reel {
+.clips .clip:nth-child(10n+11).open .reel {
   right: 0;
 }
 

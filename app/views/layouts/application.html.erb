@@ -13,6 +13,9 @@
     <% if current_user %>
     gm.current_reel_slug = '<%= current_user.current_reel_slug? ? current_user.current_reel_slug : 'null' %>';
     <% end %>
+    if (!navigator.userAgent.match(/webkit/i)) {
+      _V_.options.techOrder = ["flash","html5"];
+    }
   </script>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>

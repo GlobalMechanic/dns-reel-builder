@@ -60,7 +60,8 @@ $(document).ready(function() {
       });
       $('.clip.open').removeClass('open');
       $(this).parents('.clip').addClass('open');
-      $(this).parent().find('video').get(0).play();
+      _V_($(this).parent().find('.video-js').attr('id')).play()
+
     }
   });
 

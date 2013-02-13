@@ -44,24 +44,25 @@ $(document).ready(function() {
   $('.clip .default, .clip .title').click(function(e) {
     if ($(this).parents('.clip').hasClass('open')) {
       $(this).parents('.clip').removeClass('open');
-      $(this).parent().find('video').each(function() {
-        this.pause();
-        if (this.currentTime > 0) {
-          this.currentTime = 0;
+      $(this).parent().find('.video-js').each(function(i, item) {
+        var video = _V_($(item).attr('id'));
+        video.pause();
+        if (video.currentTime() > 0) {
+          video.currentTime(0);
         }
       });
     }
     else {
-      $('.clip.open video').each(function () {
-          this.pause();
-          if (this.currentTime > 0) {
-            this.currentTime = 0;
+      $('.clip.open .video-js').each(function (i, item) {
+          var video = _V_($(item).attr('id'));
+          video.pause();
+          if (video.currentTime() > 0) {
+            video.currentTime(0);
           }
       });
       $('.clip.open').removeClass('open');
       $(this).parents('.clip').addClass('open');
-      _V_($(this).parent().find('.video-js').attr('id')).play()
-
+      _V_($(this).parent().find('.video-js').attr('id')).play();
     }
   });
 

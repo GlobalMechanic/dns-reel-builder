@@ -34,7 +34,9 @@
   display: block;
   float: left;
   margin: 0 2px 4px 2px;
+  opacity: 0;
 }
+.clip.ready { opacity: 1; }
 .slots .clip {
   margin: 10px 0 4px 0;
 }

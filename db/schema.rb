@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130115013828) do
+ActiveRecord::Schema.define(:version => 20130801005655) do
 
   create_table "clips", :force => true do |t|
     t.string   "director"
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(:version => 20130115013828) do
     t.datetime "updated_at", :null => false
   end
 
+  add_index "reel_clips", ["clip_id"], :name => "index_reel_clips_on_clip_id"
+  add_index "reel_clips", ["reel_id"], :name => "index_reel_clips_on_reel_id"
+
   create_table "reels", :id => false, :force => true do |t|
     t.string   "title"
     t.integer  "user_id"
@@ -47,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20130115013828) do
     t.text     "description"
   end
 
+  add_index "reels", ["slug"], :name => "index_reels_on_slug"
   add_index "reels", ["user_id"], :name => "index_reels_on_user_id"
 
   create_table "roles", :force => true do |t|

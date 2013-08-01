@@ -127,6 +127,7 @@ body.reels.edit .clip img {
   position: relative;
 }
 .slot.active { border-right: 4px solid red; }
+.slot.last { height: 30px; }
 
 .slot .region {
   cursor: default;

@@ -5,7 +5,7 @@ class ReelsController < ApplicationController
   # GET /reels
   # GET /reels.json
   def index
-    @reels = Reel.where("title <> ''").where("user_id = ?", current_user.id).order('created_at DESC')
+    @reels = Reel.includes(:clips).where("title <> ''").where("user_id = ?", current_user.id).order('created_at DESC').page(params[:page]).per(params[:number])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +16,7 @@ class ReelsController < ApplicationController
   # GET /reels/1
   # GET /reels/1.json
   def show
-    @reel = Reel.find(params[:id])
+    @reel = Reel.includes(:clips).find(params[:id])
     @clips = @reel.clips.order('"order"')
     
     respond_to do |format|

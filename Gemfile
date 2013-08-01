@@ -13,6 +13,7 @@ gem "cancan"
 
 # Controllers
 gem 'meta_search'
+gem 'kaminari' # For pagination
 
 # Models
 gem 'paper_trail'

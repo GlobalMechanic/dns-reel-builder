@@ -1,1 +1,7 @@
 <%= render 'shared/clips' %>
+<div class="pager">
+  <% if @clips.length == 150 %>
+  <%= link_to 'All', :number => Clip.count %>
+  <% end %>
+  <%= paginate @clips, :window => 10 %>
+</div>

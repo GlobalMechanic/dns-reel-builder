@@ -16,11 +16,11 @@ class ClipsController < ApplicationController
     end
 
     if ['director', 'client', 'category'].include? params[:where]
-      @clips = @search.order('LOWER(' + params[:where] + ') ASC, title ASC')
+      @clips = @search.order('LOWER(' + params[:where] + ') ASC, title ASC').page(params[:page]).per(params[:number])
     elsif ['technique', 'keyword'].include? params[:where]
-      @clips = @search.order('title').uniq  
+      @clips = @search.order('title').uniq.page(params[:page]).per(params[:number])
     else
-      @clips = @search.order('title').uniq
+      @clips = @search.order('title').uniq.page(params[:page]).per(params[:number])
     end
 
     if @current_reel

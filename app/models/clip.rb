@@ -22,4 +22,7 @@ class Clip < ActiveRecord::Base
 
   validates :title, :presence => true
   validates :image, :presence => true
+
+  paginates_per 150
+
 end

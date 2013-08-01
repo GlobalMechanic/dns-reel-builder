@@ -158,4 +158,16 @@ a.button, button, input[type="submit"], input[type="reset"], input[type="button"
   margin-bottom: 5px;
 }
 
+.pager { clear: both; margin: 40px 0; padding-top: 20px; }
+.pager nav { display: inline-block; }
+.pager a, .pager .current {
+  display: inline-block;
+  padding: 10px 15px;
+  text-align: center;
+}
+
+.pager .current {
+  background: #ddd;
+}
+
 footer { clear: both; }

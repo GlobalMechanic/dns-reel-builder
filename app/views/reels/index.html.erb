@@ -1,3 +1,4 @@
+<% reel_clips = @current_reel.clips.to_a %>
 <% @reels.each do |reel| %>
 <div id="reel-<%= reel.slug %>" class="reel-id reel clips">
   <div>
@@ -9,7 +10,7 @@
   <%= content_tag(:p, 'No clips yet.') unless reel.clips.length > 0 %>
   <% reel.clips.each_with_index do |clip, index| %>
   <div class="clip" draggable="true">
-    <% if @current_reel.clips.exists?(clip) %>
+    <% if reel_clips.include?(clip) %>
     <%= link_to 'Remove from Reel', reel_clip_path(@current_reel, clip), method: :delete, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel remove' %>
     <% else %>
     <%= link_to 'Add to Reel', reel_clip_path(@current_reel, clip), method: :post, :draggable => false, :id => 'clip-' + clip.id.to_s, :class => 'reel add' %>
@@ -24,3 +25,7 @@
   <% end %>
 </div>
 <% end %>
+<div class="pager">
+  <%= link_to 'All', :number => Reel.count %>
+  <%= paginate @reels, :window => 10 %>
+</div>
